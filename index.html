@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohamed Azara — LinkedIn Ghostwriting for Agency Founders</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0f0e0c;
+    --ink-2: #3a3832;
+    --ink-3: #7a776e;
+    --paper: #f7f5f0;
+    --paper-2: #edeae3;
+    --paper-3: #e2dfd7;
+    --accent: #1a472a;
+    --accent-light: #e8f0eb;
+    --accent-mid: #2d6a42;
+    --rule: rgba(15,14,12,0.1);
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); background: var(--paper); color: var(--ink); font-size: 16px; line-height: 1.7; font-weight: 300; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: var(--paper); border-bottom: 1px solid var(--rule);
+    padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 56px;
+  }
+  .nav-brand { font-family: var(--serif); font-size: 18px; color: var(--ink); text-decoration: none; }
+  .nav-links { display: flex; gap: 1.75rem; align-items: center; }
+  .nav-links a { font-size: 13px; font-weight: 400; color: var(--ink-3); text-decoration: none; letter-spacing: 0.02em; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-cta {
+    display: inline-block; background: var(--accent); color: #fff !important;
+    padding: 8px 18px; border-radius: 4px; font-size: 13px !important; font-weight: 500 !important;
+    text-decoration: none; letter-spacing: 0.02em; transition: background 0.2s; white-space: nowrap;
+  }
+  .nav-cta:hover { background: var(--accent-mid) !important; color: #fff !important; }
+
+  /* ── HERO ── */
+  .hero {
+    margin-top: 56px; padding: 5rem 2rem 3.5rem;
+    max-width: 760px; margin-left: auto; margin-right: auto; text-align: center;
+  }
+  .hero-eyebrow { font-size: 12px; font-weight: 500; letter-spacing: 0.12em; color: var(--accent); text-transform: uppercase; margin-bottom: 1.25rem; }
+  .hero h1 { font-family: var(--serif); font-size: clamp(2.2rem, 5vw, 3.4rem); line-height: 1.15; color: var(--ink); margin-bottom: 1.25rem; }
+  .hero h1 em { font-style: italic; color: var(--accent-mid); }
+  .hero p { font-size: 17px; color: var(--ink-2); max-width: 520px; margin: 0 auto 2rem; }
+  .hero-actions { display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+
+  /* ── SHARED BUTTON STYLES ── */
+  .btn-primary {
+    display: inline-block; background: var(--accent); color: #fff;
+    padding: 13px 28px; border-radius: 4px; font-size: 14px; font-weight: 500;
+    text-decoration: none; letter-spacing: 0.02em; transition: background 0.2s; white-space: nowrap;
+  }
+  .btn-primary:hover { background: var(--accent-mid); }
+  .btn-ghost {
+    display: inline-block; background: transparent; color: var(--accent);
+    padding: 13px 28px; border-radius: 4px; font-size: 14px; font-weight: 500;
+    text-decoration: none; letter-spacing: 0.02em;
+    border: 1.5px solid var(--accent);
+    transition: background 0.2s, color 0.2s; white-space: nowrap;
+  }
+  .btn-ghost:hover { background: var(--accent-light); }
+
+  /* ── SECTION ── */
+  .section { max-width: 800px; margin: 0 auto; padding: 4rem 2rem; border-top: 1px solid var(--rule); }
+  .section-label { display: flex; align-items: center; gap: 12px; margin-bottom: 2rem; }
+  .section-num { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; color: var(--accent); text-transform: uppercase; background: var(--accent-light); padding: 4px 10px; border-radius: 2px; flex-shrink: 0; }
+  .section-title { font-family: var(--serif); font-size: clamp(1.6rem, 3.5vw, 2.2rem); line-height: 1.2; color: var(--ink); }
+  .section-sub { font-size: 15px; color: var(--ink-3); margin-bottom: 2.5rem; max-width: 580px; line-height: 1.7; }
+
+  /* ── PROCESS ── */
+  .process-steps { display: grid; gap: 0; }
+  .step { display: grid; grid-template-columns: 48px 1fr; gap: 0 1.5rem; padding: 1.5rem 0; border-bottom: 1px solid var(--rule); }
+  .step:last-child { border-bottom: none; }
+  .step-left { display: flex; flex-direction: column; align-items: center; }
+  .step-num { width: 36px; height: 36px; border: 1.5px solid var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; color: var(--accent); background: var(--paper); z-index: 1; flex-shrink: 0; }
+  .step-line { width: 1px; flex: 1; background: var(--rule); margin-top: 8px; }
+  .step:last-child .step-line { display: none; }
+  .step-content { padding-top: 6px; padding-bottom: 1rem; }
+  .step-title { font-weight: 500; font-size: 15px; color: var(--ink); margin-bottom: 4px; }
+  .step-desc { font-size: 14px; color: var(--ink-3); line-height: 1.65; }
+  .step-time { display: inline-block; margin-top: 8px; font-size: 11px; font-weight: 500; color: var(--accent); background: var(--accent-light); padding: 3px 8px; border-radius: 2px; letter-spacing: 0.04em; }
+  .process-summary { margin-top: 2rem; background: var(--accent); color: #fff; border-radius: 6px; padding: 1.5rem 2rem; display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; justify-content: center; }
+  .ps-item { text-align: center; min-width: 60px; }
+  .ps-val { font-family: var(--serif); font-size: 2rem; line-height: 1; }
+  .ps-lbl { font-size: 12px; opacity: 0.75; margin-top: 4px; }
+  .ps-div { width: 1px; background: rgba(255,255,255,0.2); align-self: stretch; min-height: 40px; }
+
+  /* ── SAMPLE POSTS ── */
+  .posts-grid { display: grid; gap: 1.5rem; }
+  .post-card { background: #fff; border: 1px solid var(--rule); border-radius: 6px; padding: 1.75rem; }
+  .post-voice { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 1rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .voice-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .v1 { background: #1a472a; } .v2 { background: #8b3a2a; } .v3 { background: #1a3a6e; }
+  .post-body { font-size: 15px; line-height: 1.8; color: var(--ink-2); white-space: pre-line; }
+  .post-footer { margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--rule); font-size: 12px; color: var(--ink-3); display: flex; gap: 1.5rem; flex-wrap: wrap; }
+
+  /* ── CASE STUDY ── */
+  .cs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .cs-card { background: #fff; border: 1px solid var(--rule); border-radius: 6px; padding: 1.5rem; }
+  .cs-card-title { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 1rem; }
+  .cs-field { border-bottom: 1px solid var(--rule); padding: 10px 0; font-size: 14px; color: var(--ink-2); display: flex; flex-direction: column; gap: 3px; }
+  .cs-field:last-child { border-bottom: none; }
+  .cs-field-label { font-size: 11px; color: var(--ink-3); font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; }
+  .cs-field-value { color: var(--ink); }
+  .cs-metrics { margin-top: 1.5rem; background: var(--paper-2); border-radius: 6px; padding: 1.5rem; display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; text-align: center; }
+  .cs-metric-val { font-family: var(--serif); font-size: 1.8rem; color: var(--accent); line-height: 1.1; }
+  .cs-metric-lbl { font-size: 12px; color: var(--ink-3); margin-top: 4px; line-height: 1.4; }
+  .cs-before-after { margin-top: 1.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .ba-card { border-radius: 6px; padding: 1.25rem; }
+  .ba-before { background: #fdf2f0; border: 1px solid #f0c8c0; }
+  .ba-after { background: var(--accent-light); border: 1px solid #c0d8c8; }
+  .ba-label { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+  .ba-before .ba-label { color: #8b3a2a; }
+  .ba-after .ba-label { color: var(--accent); }
+  .ba-text { font-size: 13px; color: var(--ink-2); line-height: 1.6; }
+  .cs-quote { margin-top: 2rem; padding: 1.5rem; border-left: 3px solid var(--accent); background: var(--paper-2); border-radius: 0 6px 6px 0; }
+  .cs-quote p { font-family: var(--serif); font-size: 1.1rem; color: var(--ink); line-height: 1.6; font-style: italic; }
+  .cs-quote cite { display: block; margin-top: 8px; font-size: 12px; color: var(--ink-3); font-style: normal; }
+
+  /* ── FAQ ── */
+  .faq-list { display: grid; gap: 0; }
+  .faq-item { border-bottom: 1px solid var(--rule); }
+  .faq-item:first-child { border-top: 1px solid var(--rule); }
+  .faq-q {
+    width: 100%; background: none; border: none; padding: 1.25rem 0;
+    text-align: left; cursor: pointer; display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem;
+    font-family: var(--sans); font-size: 15px; font-weight: 500; color: var(--ink); line-height: 1.4;
+  }
+  .faq-q:hover { color: var(--accent); }
+  .faq-icon { font-size: 20px; color: var(--accent); flex-shrink: 0; transition: transform 0.25s; font-weight: 300; line-height: 1; margin-top: 2px; }
+  .faq-item.open .faq-icon { transform: rotate(45deg); }
+  .faq-a { display: none; padding-bottom: 1.25rem; font-size: 14px; color: var(--ink-3); line-height: 1.75; max-width: 600px; }
+  .faq-item.open .faq-a { display: block; }
+  .faq-a a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(26,71,42,0.3); }
+
+  /* ── FINAL CTA CARD ── */
+  .cta-section { max-width: 800px; margin: 0 auto; border-top: 1px solid var(--rule); padding: 4rem 2rem; }
+  .cta-inner {
+    background: var(--ink); border-radius: 8px; padding: 3rem;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;
+  }
+  .cta-eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 0.75rem; }
+  .cta-title { font-family: var(--serif); font-size: clamp(1.6rem, 3vw, 2.1rem); line-height: 1.2; color: #fff; margin-bottom: 1rem; }
+  .cta-title em { font-style: italic; color: #9FE1CB; }
+  .cta-desc { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 1.75rem; }
+  .cta-btn {
+    display: inline-block; background: #fff; color: var(--ink);
+    padding: 13px 28px; border-radius: 4px; font-size: 14px; font-weight: 500;
+    text-decoration: none; letter-spacing: 0.02em; transition: background 0.2s; white-space: nowrap;
+  }
+  .cta-btn:hover { background: #9FE1CB; }
+  .cta-ps { margin-top: 1.25rem; font-size: 12px; color: rgba(255,255,255,0.4); line-height: 1.65; }
+  .cta-ps a { color: rgba(255,255,255,0.65); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.2); }
+  .cta-detail-label { font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 0.75rem; }
+  .cta-row { display: flex; align-items: baseline; gap: 10px; padding: 0.85rem 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .cta-row:last-child { border-bottom: none; }
+  .cta-row-label { color: rgba(255,255,255,0.4); font-size: 12px; min-width: 90px; flex-shrink: 0; }
+  .cta-row-val { color: #fff; font-size: 14px; line-height: 1.5; }
+  .cta-row-val em { font-style: normal; color: #9FE1CB; font-weight: 500; }
+
+  /* ── FOOTER ── */
+  footer { border-top: 1px solid var(--rule); padding: 2rem; text-align: center; font-size: 13px; color: var(--ink-3); max-width: 800px; margin: 0 auto; }
+  footer a { color: var(--accent); text-decoration: none; }
+
+  /* ── MOBILE ── */
+  @media (max-width: 680px) {
+    nav { padding: 0 1.25rem; }
+    .nav-links { gap: 1rem; }
+    .nav-links a:not(.nav-cta) { display: none; }
+    .hero { padding: 3rem 1.25rem 2.5rem; }
+    .hero p { font-size: 16px; }
+    .hero-actions { flex-direction: column; align-items: stretch; padding: 0 0; }
+    .btn-primary, .btn-ghost { text-align: center; }
+    .section { padding: 2.5rem 1.25rem; }
+    .process-summary { gap: 1rem; padding: 1.25rem; }
+    .ps-div { display: none; }
+    .cs-grid { grid-template-columns: 1fr; }
+    .cs-before-after { grid-template-columns: 1fr; }
+    .cs-metrics { grid-template-columns: repeat(3,1fr); gap: 0.5rem; padding: 1rem; }
+    .cs-metric-val { font-size: 1.4rem; }
+    .post-footer { gap: 0.75rem; }
+    .cta-section { padding: 2.5rem 1.25rem; }
+    .cta-inner { grid-template-columns: 1fr; gap: 2rem; padding: 1.75rem; }
+    .cta-btn { display: block; text-align: center; }
+    .faq-q { font-size: 14px; }
+  }
+  @media (max-width: 400px) {
+    .cs-metrics { grid-template-columns: 1fr 1fr; }
+    .cs-metrics > div:last-child { grid-column: span 2; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#">Mohamed Azara</a>
+  <div class="nav-links">
+    <a href="#process">How It Works</a>
+    <a href="#samples">Samples</a>
+    <a href="#casestudy">Case Study</a>
+    <a href="#faq">FAQ</a>
+    <a href="#getstarted" class="nav-cta">Get 3 Posts — $150 →</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <div class="hero-eyebrow">LinkedIn Ghostwriting for Agency Founders</div>
+  <h1>You run the agency.<br><em>I run your LinkedIn.</em></h1>
+  <p>Done-for-you content that keeps you visible, builds your authority, and brings warm inbound — while you stay focused on delivery.</p>
+  <div class="hero-actions">
+    <a href="#getstarted" class="btn-primary">Get 3 Posts — $150 →</a>
+    <a href="#samples" class="btn-ghost">See written samples ↓</a>
+  </div>
+</div>
+
+<!-- ── 01: HOW IT WORKS ── -->
+<section class="section" id="process">
+  <div class="section-label">
+    <span class="section-num">01</span>
+    <div class="section-title">How It Works</div>
+  </div>
+  <p class="section-sub">One week. Three posts. $150. Here's exactly what happens from the moment you pay to the moment your content is live.</p>
+
+  <div class="process-steps">
+    <div class="step">
+      <div class="step-left"><div class="step-num">1</div><div class="step-line"></div></div>
+      <div class="step-content">
+        <div class="step-title">You Pay. You Land on the Intake Form.</div>
+        <div class="step-desc">$150 secures your spot. You're redirected to a short form immediately — no calls, no back-and-forth. Fill it in when it suits you.</div>
+        <span class="step-time">Your time: 2 min</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-left"><div class="step-num">2</div><div class="step-line"></div></div>
+      <div class="step-content">
+        <div class="step-title">You Complete the Intake Form</div>
+        <div class="step-desc">Around 10–15 minutes. Questions about your agency, your clients, and how you naturally communicate. This is where I learn how you think — not just what you do.</div>
+        <span class="step-time">Your time: 15 min — one time</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-left"><div class="step-num">3</div><div class="step-line"></div></div>
+      <div class="step-content">
+        <div class="step-title">I Build Your Voice Profile</div>
+        <div class="step-desc">I map your vocabulary, sentence rhythm, the positions you hold, and the things you'd never say. This document governs every word I write — so nothing sounds generic or off-brand.</div>
+        <span class="step-time">Your time: 0 min</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-left"><div class="step-num">4</div><div class="step-line"></div></div>
+      <div class="step-content">
+        <div class="step-title">3 Posts Written & Delivered in 72 Hours</div>
+        <div class="step-desc">Three fully structured posts — different formats, different angles — all written to reflect how you actually think and speak. In your inbox within 72 hours of submitting your form.</div>
+        <span class="step-time">Your time: 0 min</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-left"><div class="step-num">5</div><div class="step-line"></div></div>
+      <div class="step-content">
+        <div class="step-title">You Review, Approve, and Post</div>
+        <div class="step-desc">Read through the posts. One round of revisions is included — most founders approve with minimal changes because the voice capture does the heavy lifting before I write a single word.</div>
+        <span class="step-time">Your time: 10 min</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="process-summary">
+    <div class="ps-item"><div class="ps-val">25</div><div class="ps-lbl">min from you, total</div></div>
+    <div class="ps-div"></div>
+    <div class="ps-item"><div class="ps-val">3</div><div class="ps-lbl">posts delivered</div></div>
+    <div class="ps-div"></div>
+    <div class="ps-item"><div class="ps-val">72h</div><div class="ps-lbl">turnaround</div></div>
+    <div class="ps-div"></div>
+    <div class="ps-item"><div class="ps-val">0</div><div class="ps-lbl">calls required</div></div>
+    <div class="ps-div"></div>
+    <div class="ps-item"><div class="ps-val">$150</div><div class="ps-lbl">flat rate</div></div>
+  </div>
+</section>
+
+<!-- ── 02: SAMPLE POSTS ── -->
+<section class="section" id="samples">
+  <div class="section-label">
+    <span class="section-num">02</span>
+    <div class="section-title">What to Expect</div>
+  </div>
+  <p class="section-sub">Three posts written for three different founder voices. Same process. Completely different personalities.</p>
+
+  <div class="posts-grid">
+    <div class="post-card">
+      <div class="post-voice"><span class="voice-dot v1"></span>Voice 01 — Direct & Data-Led · Paid Media Agency Founder</div>
+      <div class="post-body">Every client we lost in 2023 said the same thing before they left.
+
+"We're not seeing ROI."
+
+Not "your team isn't working hard enough."
+Not "we don't like the strategy."
+
+ROI.
+
+Here's what nobody in paid media wants to say out loud:
+
+We were hitting every KPI in the contract and still losing accounts. Click-through rates. Cost per lead. MQL volume — all green.
+
+Because the KPIs in the contract were the wrong ones.
+
+So we changed the conversation before we changed anything else.
+
+We stopped pitching media buying. We started pitching revenue outcomes. We rewrote every proposal around one number: cost per acquired customer.
+
+Not cost per click. Not cost per lead. Cost per customer.
+
+Three things happened fast.
+
+Close rate on new proposals jumped from 34% to 61% in one quarter. Prospects who'd gone dark started replying.
+
+Retention went up. When a client sees the metric that matters to their P&L, they stop second-guessing every campaign tweak.
+
+Average contract value increased. Because we were now in a conversation about revenue — not ad spend.
+
+The work didn't change. The framing did.
+
+If you're measuring clicks and your client is measuring revenue, you're always going to be on the defensive.
+
+Change the metric first. Everything else follows.</div>
+      <div class="post-footer">
+        <span>↗ 1,240 impressions</span>
+        <span>♡ 118 reactions</span>
+        <span>💬 44 comments</span>
+      </div>
+    </div>
+
+    <div class="post-card">
+      <div class="post-voice"><span class="voice-dot v2"></span>Voice 02 — Warm & Story-Led · Brand Strategy Agency Founder</div>
+      <div class="post-body">A founder came to us three years ago with a brief that said: "Make us look premium."
+
+That was it. That was the entire brief.
+
+We asked her what premium meant to her clients.
+
+She said, "You know. Premium. High-end. Expensive-looking."
+
+We asked again. What does your best client feel when they're working with you — before they see any deliverable?
+
+She went quiet for a moment.
+
+Then she said: "Safe. They feel safe. Like someone finally understands their problem well enough that they don't have to keep explaining it."
+
+That answer changed everything.
+
+We didn't build her a "premium" brand. We built her a brand that communicated depth of understanding. Every touchpoint — website, proposals, the way her team answered emails — designed to make a prospect feel understood before they'd spent a penny.
+
+Her positioning shifted from "boutique brand agency" to "the firm founders call when the stakes are too high to get it wrong."
+
+Revenue per client doubled in 14 months.
+
+Not because she raised prices.
+
+Because her clients stopped negotiating them.
+
+The brief she gave us was never the real brief.
+
+The real brief was underneath it. It always is.</div>
+      <div class="post-footer">
+        <span>↗ 980 impressions</span>
+        <span>♡ 143 reactions</span>
+        <span>💬 61 comments</span>
+      </div>
+    </div>
+
+    <div class="post-card">
+      <div class="post-voice"><span class="voice-dot v3"></span>Voice 03 — Contrarian & Opinion-Led · UX & Product Agency Founder</div>
+      <div class="post-body">We billed $180K in UX work last year for a single client.
+
+They implemented 11% of our recommendations.
+
+And they renewed.
+
+That used to frustrate me. Now I understand exactly why it happens — and why fighting it is the wrong instinct.
+
+We measure success by what leaves our hands. Decks produced. Research completed. Recommendations delivered.
+
+The client measures success by what gets shipped.
+
+Those two definitions of "done" almost never overlap. And nobody talks about it honestly.
+
+So we changed our scope.
+
+We stopped treating implementation as the client's problem. We started joining sprint planning. Sitting in the room when the roadmap got prioritised. Translating research into the language engineers actually respond to — effort estimates, revenue impact, risk reduction.
+
+Not because it was in the contract.
+
+Because without it, the work doesn't work.
+
+Our implementation rate went from under 20% to 64% over 18 months.
+
+Not because our research improved.
+
+Because we stopped dropping it at the door.
+
+The founders charging the most in this space aren't the ones with the sharpest frameworks.
+
+They're the ones who stayed in the room long enough to see the work land — then wrote about it.</div>
+      <div class="post-footer">
+        <span>↗ 1,570 impressions</span>
+        <span>♡ 162 reactions</span>
+        <span>💬 73 comments</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 03: CASE STUDY ── -->
+<section class="section" id="casestudy">
+  <div class="section-label">
+    <span class="section-num">03</span>
+    <div class="section-title">Case Study</div>
+  </div>
+  <p class="section-sub">This is what the monthly retainer produces. The trial week is where it starts.</p>
+
+  <div class="cs-grid">
+    <div class="cs-card">
+      <div class="cs-card-title">The Client</div>
+      <div class="cs-field"><span class="cs-field-label">Business</span><span class="cs-field-value">Founder, 8-person paid ads agency (Meta & Google)</span></div>
+      <div class="cs-field"><span class="cs-field-label">Revenue</span><span class="cs-field-value">$40K–$65K/month</span></div>
+      <div class="cs-field"><span class="cs-field-label">Goal</span><span class="cs-field-value">Reactivate dormant followers & drive qualified sales calls from LinkedIn</span></div>
+      <div class="cs-field"><span class="cs-field-label">Starting point</span><span class="cs-field-value">Last post 4 months prior. Zero inbound from LinkedIn in 6 months.</span></div>
+    </div>
+    <div class="cs-card">
+      <div class="cs-card-title">The Engagement</div>
+      <div class="cs-field"><span class="cs-field-label">Duration</span><span class="cs-field-value">1 month (monthly retainer)</span></div>
+      <div class="cs-field"><span class="cs-field-label">Deliverable</span><span class="cs-field-value">12 LinkedIn posts (3/week), fully ghostwritten</span></div>
+      <div class="cs-field"><span class="cs-field-label">Input from client</span><span class="cs-field-value">1 intake form, then weekly 5-min voice note</span></div>
+      <div class="cs-field"><span class="cs-field-label">Revisions</span><span class="cs-field-value">1 round on 3 posts across the month</span></div>
+    </div>
+  </div>
+
+  <div class="cs-metrics">
+    <div><div class="cs-metric-val">6.4×</div><div class="cs-metric-lbl">Avg. engagement lift vs. prior 30 days</div></div>
+    <div><div class="cs-metric-val">5</div><div class="cs-metric-lbl">Sales calls booked from LinkedIn</div></div>
+    <div><div class="cs-metric-val">+94</div><div class="cs-metric-lbl">New followers in 30 days</div></div>
+  </div>
+
+  <div class="cs-before-after">
+    <div class="ba-card ba-before">
+      <div class="ba-label">Before</div>
+      <div class="ba-text">Posting once every 3–4 weeks. Mostly agency news and case study links. 4–7 reactions per post. Follower base disengaged. Zero inbound from LinkedIn in 6 months.</div>
+    </div>
+    <div class="ba-card ba-after">
+      <div class="ba-label">After</div>
+      <div class="ba-text">3 posts/week. Mix of founder POV, client stories, and contrarian takes on paid media. 50–110 reactions per post. 5 sales calls booked — 2 converted to retainers within 30 days.</div>
+    </div>
+  </div>
+
+  <div class="cs-quote">
+    <p>"I hadn't posted in months and I assumed my audience had moved on. Within two weeks the comments were back. By the end of the month I had five sales calls in the diary — two of which closed. The posts sounded exactly like me, which is the part I was most sceptical about."</p>
+    <cite>— Founder, Paid Ads Agency (Manchester)</cite>
+  </div>
+</section>
+
+<!-- ── 04: FAQ ── -->
+<section class="section" id="faq">
+  <div class="section-label">
+    <span class="section-num">04</span>
+    <div class="section-title">FAQ</div>
+  </div>
+  <p class="section-sub">Everything people ask before they pay.</p>
+
+  <div class="faq-list">
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        How do you make posts sound like me and not like AI?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">The intake form is designed to extract how you actually think — not how you'd describe yourself on a website. I'm looking for your specific vocabulary, the positions you hold, the things you'd never say, and the way you tell a story. Once I have that, I write in that voice and don't deviate from it. Most clients say the first draft sounds more like them than content they've written themselves — because they're usually editing for "professionalism" in ways that strip out their actual voice.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        What if I don't like the posts?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">One round of revisions is included — tell me specifically what doesn't feel right and I'll rework it. In practice, most founders approve the first draft with minor tweaks, because the voice capture does most of the heavy lifting before I write a word. If something is genuinely off, I'll fix it. I'd rather get it right than have you post something you're not proud of.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        What's the difference between the $150 trial and the monthly retainer?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">The trial is one week — 3 posts, $150, delivered in 72 hours. It's designed to let you see the quality and feel the process before committing to anything ongoing. The monthly retainer is 12 posts per month (3 per week), billed monthly. Most clients who try the trial continue — not because I push them to, but because consistent posting is what produces the results. The trial is where it starts, not where it ends.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Do I need to be active on LinkedIn already?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">No. Some of my best results have come from founders who hadn't posted in months. A dormant audience isn't a dead one — they just need a reason to re-engage. The first week of content is designed to do exactly that: reintroduce you with something worth reading, not just announce that you're back.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        How much of my time does this actually take?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">For the trial: around 15 minutes to complete the intake form, and 10 minutes to review and approve the posts. That's it. No calls. No briefing sessions. No weekly check-ins. For the ongoing retainer, you send a 5-minute voice note once a week — talking about whatever's been happening in your business — and I handle everything else from there.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        I'm already posting occasionally. Will this still add value?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">Usually more value than for someone starting from scratch — because you already know what LinkedIn can do, and you've probably felt the gap between posting sporadically and posting consistently with a strategy behind it. The jump from 1–2 posts a month to 3 structured posts a week, all written in a coherent voice, is where the compound effect kicks in.</div>
+    </div>
+
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        I run a SaaS company, not an agency. Can you still help?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">Yes. The process works for any founder who sells a service or product to other businesses and wants to build a presence on LinkedIn. The voice capture approach is the same — I learn how you think, then write in that voice. The niche on my profile is agency founders because that's my core ICP, but if you're a SaaS founder, consultant, or B2B service provider with a point of view worth sharing, reach out before you pay and I'll tell you honestly whether it's a good fit.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── FINAL CTA CARD ── -->
+<div class="cta-section" id="getstarted">
+  <div class="cta-inner">
+    <div>
+      <div class="cta-eyebrow">Start here</div>
+      <div class="cta-title">Three posts.<br><em>$150. 72 hours.</em></div>
+      <p class="cta-desc">Pay once. Get three posts written in your voice, delivered to your inbox. One round of revisions included. No calls. No commitment beyond this.</p>
+      <a href="https://www.paypal.com/ncp/payment/AAVA64WSU2HSC" target="_blank" class="cta-btn">Get Your 3 Posts — $150 →</a>
+      <p class="cta-ps">Questions first? DM me on <a href="https://www.linkedin.com/in/mohamedazara1/" target="_blank">LinkedIn</a> — I reply same day.</p>
+    </div>
+    <div>
+      <div class="cta-detail-label">What's included</div>
+      <div class="cta-row">
+        <span class="cta-row-label">What I need</span>
+        <span class="cta-row-val">A completed intake form — <em>15 min, one time</em></span>
+      </div>
+      <div class="cta-row">
+        <span class="cta-row-label">Deliverable</span>
+        <span class="cta-row-val"><em>3 LinkedIn posts</em>, fully written in your voice</span>
+      </div>
+      <div class="cta-row">
+        <span class="cta-row-label">Formats</span>
+        <span class="cta-row-val">Different angles — chosen for your goal and audience</span>
+      </div>
+      <div class="cta-row">
+        <span class="cta-row-label">Revisions</span>
+        <span class="cta-row-val"><em>1 round</em> included</span>
+      </div>
+      <div class="cta-row">
+        <span class="cta-row-label">Turnaround</span>
+        <span class="cta-row-val"><em>72 hours</em> from form submission</span>
+      </div>
+      <div class="cta-row">
+        <span class="cta-row-label">Cost</span>
+        <span class="cta-row-val"><em>$150</em> flat — no hidden fees</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>Mohamed Azara — LinkedIn Ghostwriter for Marketing Agency Founders &nbsp;·&nbsp; <a href="https://www.linkedin.com/in/mohamedazara1/" target="_blank">LinkedIn</a></p>
+</footer>
+
+<script>
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+</script>
+
+</body>
+</html>
