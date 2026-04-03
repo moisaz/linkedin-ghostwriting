@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome — Mohamed Azara</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0f0e0c;
+    --ink-2: #3a3832;
+    --ink-3: #7a776e;
+    --paper: #f7f5f0;
+    --paper-2: #edeae3;
+    --paper-3: #e2dfd7;
+    --accent: #1a472a;
+    --accent-light: #e8f0eb;
+    --accent-mid: #2d6a42;
+    --rule: rgba(15,14,12,0.1);
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.7;
+    font-weight: 300;
+    min-height: 100vh;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: var(--paper);
+    border-bottom: 1px solid var(--rule);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 56px;
+  }
+  .nav-brand { font-family: var(--serif); font-size: 18px; color: var(--ink); text-decoration: none; }
+  .nav-note { font-size: 12px; color: var(--ink-3); letter-spacing: 0.02em; }
+
+  /* ── WELCOME HEADER ── */
+  .welcome {
+    margin-top: 56px;
+    padding: 4rem 2rem 3rem;
+    max-width: 680px;
+    margin-left: auto; margin-right: auto;
+    text-align: center;
+  }
+
+  .welcome-eyebrow {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.12em;
+    color: var(--accent); text-transform: uppercase;
+    margin-bottom: 1rem;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+  }
+  .eyebrow-line {
+    display: inline-block; width: 32px; height: 1px; background: var(--accent); opacity: 0.4;
+  }
+
+  .welcome h1 {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 5vw, 3rem);
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 1rem;
+  }
+  .welcome h1 em { font-style: italic; color: var(--accent-mid); }
+
+  .welcome-body {
+    font-size: 16px; color: var(--ink-2);
+    max-width: 500px; margin: 0 auto 0.5rem;
+    line-height: 1.75;
+  }
+
+  .welcome-note {
+    margin-top: 1.5rem;
+    display: inline-flex; align-items: flex-start; gap: 10px;
+    background: var(--accent-light);
+    border: 1px solid rgba(26,71,42,0.15);
+    border-radius: 6px;
+    padding: 0.85rem 1.25rem;
+    font-size: 13px; color: var(--accent);
+    text-align: left; line-height: 1.6;
+    max-width: 480px;
+  }
+  .note-icon { font-size: 15px; flex-shrink: 0; margin-top: 1px; }
+
+  /* ── PROGRESS ── */
+  .progress-wrap {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 2rem 2rem;
+  }
+  .progress-track {
+    display: flex; align-items: center; gap: 0;
+    margin-bottom: 0.5rem;
+  }
+  .progress-step {
+    display: flex; align-items: center; gap: 0; flex: 1;
+  }
+  .progress-dot {
+    width: 28px; height: 28px; border-radius: 50%;
+    border: 1.5px solid var(--paper-3);
+    background: var(--paper);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 500; color: var(--ink-3);
+    flex-shrink: 0; transition: all 0.3s;
+    position: relative; z-index: 1;
+  }
+  .progress-dot.active {
+    border-color: var(--accent);
+    background: var(--accent);
+    color: #fff;
+  }
+  .progress-dot.done {
+    border-color: var(--accent);
+    background: var(--accent-light);
+    color: var(--accent);
+  }
+  .progress-dot.done::after {
+    content: '✓';
+    font-size: 12px;
+  }
+  .progress-dot.done span { display: none; }
+  .progress-line {
+    flex: 1; height: 1px; background: var(--paper-3);
+    margin: 0; transition: background 0.3s;
+  }
+  .progress-line.done { background: var(--accent); opacity: 0.3; }
+  .progress-labels {
+    display: flex; justify-content: space-between;
+    padding: 0 0;
+  }
+  .progress-label {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.07em;
+    text-transform: uppercase; color: var(--ink-3);
+    text-align: center;
+    transition: color 0.3s;
+    flex: 1;
+  }
+  .progress-label:first-child { text-align: left; }
+  .progress-label:last-child { text-align: right; }
+  .progress-label.active { color: var(--accent); }
+
+  /* ── FORM LAYOUT ── */
+  .form-outer {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 2rem 4rem;
+  }
+
+  .form-section {
+    display: none;
+    animation: fadeIn 0.35s ease;
+  }
+  .form-section.active { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .section-header {
+    border-top: 1px solid var(--rule);
+    padding-top: 2.5rem;
+    margin-bottom: 2rem;
+  }
+  .section-tag {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+    color: var(--accent); text-transform: uppercase;
+    background: var(--accent-light);
+    padding: 3px 10px; border-radius: 2px;
+    display: inline-block; margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(1.4rem, 3vw, 1.9rem);
+    line-height: 1.2; color: var(--ink);
+    margin-bottom: 0.4rem;
+  }
+  .section-sub {
+    font-size: 14px; color: var(--ink-3);
+    max-width: 520px; line-height: 1.65;
+  }
+
+  /* ── FIELDS ── */
+  .field-group { margin-bottom: 1.75rem; }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.75rem; }
+  @media (max-width: 560px) { .field-row { grid-template-columns: 1fr; } }
+
+  label {
+    display: block;
+    font-size: 13px; font-weight: 500; color: var(--ink-2);
+    margin-bottom: 0.4rem; letter-spacing: 0.01em;
+  }
+  .label-note {
+    font-size: 12px; font-weight: 300; color: var(--ink-3);
+    margin-left: 6px;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="url"],
+  select,
+  textarea {
+    width: 100%;
+    background: #fff;
+    border: 1px solid var(--paper-3);
+    border-radius: 4px;
+    padding: 10px 14px;
+    font-family: var(--sans);
+    font-size: 14px; font-weight: 300;
+    color: var(--ink);
+    line-height: 1.6;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
+  }
+  input::placeholder, textarea::placeholder { color: var(--ink-3); opacity: 0.7; }
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(26,71,42,0.08);
+  }
+  textarea { resize: vertical; min-height: 100px; }
+  textarea.tall { min-height: 130px; }
+
+  select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237a776e' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+    cursor: pointer;
+  }
+
+  /* ── CHOICE CARDS ── */
+  .choice-grid {
+    display: grid;
+    gap: 0.75rem;
+  }
+  .choice-grid.two-col { grid-template-columns: 1fr 1fr; }
+  @media (max-width: 560px) { .choice-grid.two-col { grid-template-columns: 1fr; } }
+
+  .choice-card {
+    background: #fff;
+    border: 1.5px solid var(--paper-3);
+    border-radius: 5px;
+    padding: 0.9rem 1.1rem;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+    display: flex; align-items: flex-start; gap: 10px;
+  }
+  .choice-card:hover { border-color: var(--accent-mid); }
+  .choice-card.selected {
+    border-color: var(--accent);
+    background: var(--accent-light);
+  }
+  .choice-radio {
+    width: 16px; height: 16px; border-radius: 50%;
+    border: 1.5px solid var(--paper-3);
+    flex-shrink: 0; margin-top: 3px;
+    transition: all 0.2s;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .choice-card.selected .choice-radio {
+    border-color: var(--accent);
+    background: var(--accent);
+  }
+  .choice-card.selected .choice-radio::after {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%; background: #fff;
+  }
+  .choice-label { font-size: 14px; color: var(--ink-2); line-height: 1.5; }
+  .choice-label strong { display: block; font-size: 13px; font-weight: 500; color: var(--ink); margin-bottom: 1px; }
+
+  /* Checkbox variant */
+  .check-card .choice-radio { border-radius: 3px; }
+  .check-card.selected .choice-radio::after {
+    content: '✓'; border-radius: 0;
+    background: transparent; color: #fff;
+    font-size: 10px; font-weight: 700; width: auto; height: auto;
+  }
+
+  /* ── SCALE ── */
+  .scale-wrap { margin-top: 0.5rem; }
+  .scale-track {
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px;
+  }
+  .scale-btn {
+    background: #fff; border: 1.5px solid var(--paper-3);
+    border-radius: 4px; padding: 10px 0;
+    text-align: center; cursor: pointer;
+    font-size: 13px; font-weight: 400; color: var(--ink-3);
+    transition: all 0.2s;
+  }
+  .scale-btn:hover { border-color: var(--accent-mid); color: var(--ink); }
+  .scale-btn.selected { border-color: var(--accent); background: var(--accent-light); color: var(--accent); font-weight: 500; }
+  .scale-labels {
+    display: flex; justify-content: space-between;
+    margin-top: 5px;
+    font-size: 11px; color: var(--ink-3);
+  }
+
+  /* ── DIVIDER ── */
+  .field-divider {
+    border: none; border-top: 1px solid var(--rule);
+    margin: 2rem 0;
+  }
+
+  /* ── BUTTONS ── */
+  .form-actions {
+    display: flex; align-items: center; gap: 1rem;
+    margin-top: 2.5rem;
+  }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--accent); color: #fff;
+    padding: 12px 28px;
+    border-radius: 4px;
+    font-family: var(--sans);
+    font-size: 14px; font-weight: 500;
+    letter-spacing: 0.02em;
+    border: none; cursor: pointer;
+    transition: background 0.2s;
+  }
+  .btn-primary:hover { background: var(--accent-mid); }
+  .btn-secondary {
+    font-size: 13px; color: var(--ink-3);
+    background: none; border: none;
+    cursor: pointer; font-family: var(--sans);
+    text-decoration: underline; text-underline-offset: 3px;
+    padding: 12px 0;
+    transition: color 0.2s;
+  }
+  .btn-secondary:hover { color: var(--ink); }
+  .btn-arrow { font-size: 16px; transition: transform 0.2s; }
+  .btn-primary:hover .btn-arrow { transform: translateX(3px); }
+
+  /* ── CONFIRMATION ── */
+  #step-done {
+    text-align: center;
+    padding: 5rem 2rem;
+    max-width: 580px;
+    margin: 0 auto;
+    display: none;
+  }
+  #step-done.active { display: block; animation: fadeIn 0.4s ease; }
+  .done-icon {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--accent-light);
+    border: 1.5px solid rgba(26,71,42,0.2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    margin: 0 auto 1.5rem;
+  }
+  .done-title {
+    font-family: var(--serif);
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    line-height: 1.2; color: var(--ink);
+    margin-bottom: 0.75rem;
+  }
+  .done-title em { font-style: italic; color: var(--accent-mid); }
+  .done-body { font-size: 15px; color: var(--ink-2); line-height: 1.75; margin-bottom: 2rem; }
+  .done-card {
+    background: #fff; border: 1px solid var(--rule);
+    border-radius: 6px; padding: 1.25rem 1.5rem;
+    text-align: left; margin-bottom: 1.5rem;
+  }
+  .done-card-title { font-size: 11px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 0.75rem; }
+  .done-item {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: 14px; color: var(--ink-2); line-height: 1.6;
+    margin-bottom: 0.5rem;
+  }
+  .done-item:last-child { margin-bottom: 0; }
+  .done-bullet { color: var(--accent); font-size: 16px; line-height: 1.4; flex-shrink: 0; }
+  .done-linkedin {
+    font-size: 13px; color: var(--ink-3); line-height: 1.65;
+  }
+  .done-linkedin a { color: var(--accent); text-decoration: none; }
+  .done-linkedin a:hover { text-decoration: underline; }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.5rem 2rem;
+    text-align: center;
+    font-size: 12px; color: var(--ink-3);
+    max-width: 680px; margin: 0 auto;
+  }
+
+  /* ── FIELD HINT ── */
+  .field-hint {
+    font-size: 12px; color: var(--ink-3); margin-top: 5px;
+    line-height: 1.55;
+  }
+
+  /* Required star */
+  .req { color: var(--accent); margin-left: 2px; font-size: 12px; }
+
+  /* char counter */
+  .char-count {
+    font-size: 11px; color: var(--ink-3);
+    text-align: right; margin-top: 4px;
+  }
+
+  /* inline validation */
+  .field-error {
+    font-size: 12px; color: #8b3a2a; margin-top: 5px;
+    display: none;
+  }
+  input.invalid, textarea.invalid, select.invalid {
+    border-color: #c0614e;
+    box-shadow: 0 0 0 3px rgba(139,58,42,0.07);
+  }
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#">Mohamed Azara</a>
+  <span class="nav-note">Client Intake · Confidential</span>
+</nav>
+
+<!-- WELCOME -->
+<div class="welcome">
+  <div class="welcome-eyebrow">
+    <span class="eyebrow-line"></span>
+    You're in
+    <span class="eyebrow-line"></span>
+  </div>
+  <h1>Let's capture<br><em>how you think.</em></h1>
+  <p class="welcome-body">
+    This form takes 10–15 minutes. It's the most important thing we do together — 
+    everything I write will be built from what you tell me here.
+  </p>
+  <div class="welcome-note">
+    <span class="note-icon">→</span>
+    <span>You'll receive your 3 posts within <strong>72 hours</strong> of submitting this form. No calls. No back-and-forth. Just read, review, and post.</span>
+  </div>
+</div>
+
+<!-- PROGRESS -->
+<div class="progress-wrap">
+  <div class="progress-track">
+    <div class="progress-step">
+      <div class="progress-dot active" id="dot-1"><span>1</span></div>
+      <div class="progress-line" id="line-1"></div>
+    </div>
+    <div class="progress-step">
+      <div class="progress-dot" id="dot-2"><span>2</span></div>
+      <div class="progress-line" id="line-2"></div>
+    </div>
+    <div class="progress-step">
+      <div class="progress-dot" id="dot-3"><span>3</span></div>
+      <div class="progress-line" id="line-3"></div>
+    </div>
+    <div class="progress-step">
+      <div class="progress-dot" id="dot-4"><span>4</span></div>
+      <div class="progress-line" id="line-4"></div>
+    </div>
+    <div class="progress-dot" id="dot-5"><span>5</span></div>
+  </div>
+  <div class="progress-labels">
+    <span class="progress-label active" id="lbl-1">You</span>
+    <span class="progress-label" id="lbl-2">Agency</span>
+    <span class="progress-label" id="lbl-3">Voice</span>
+    <span class="progress-label" id="lbl-4">Content</span>
+    <span class="progress-label" id="lbl-5">Goals</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ -->
+<!-- FORM -->
+<div class="form-outer">
+
+  <!-- ── STEP 1: YOU ── -->
+  <div class="form-section active" id="step-1">
+    <div class="section-header">
+      <span class="section-tag">01 — You</span>
+      <div class="section-title">The basics</div>
+      <p class="section-sub">Straightforward stuff. This is how I address you and where your posts will live.</p>
+    </div>
+
+    <div class="field-row">
+      <div class="field-group" style="margin-bottom:0">
+        <label>First name <span class="req">*</span></label>
+        <input type="text" id="first-name" placeholder="e.g. James" />
+        <div class="field-error" id="err-first-name">Please enter your first name.</div>
+      </div>
+      <div class="field-group" style="margin-bottom:0">
+        <label>Last name <span class="req">*</span></label>
+        <input type="text" id="last-name" placeholder="e.g. Carter" />
+        <div class="field-error" id="err-last-name">Please enter your last name.</div>
+      </div>
+    </div>
+
+    <div class="field-group" style="margin-top:1.75rem">
+      <label>Email address <span class="req">*</span></label>
+      <input type="email" id="email" placeholder="you@youragency.com" />
+      <p class="field-hint">I'll send your 3 posts to this address.</p>
+      <div class="field-error" id="err-email">Please enter a valid email address.</div>
+    </div>
+
+    <div class="field-group">
+      <label>Your LinkedIn profile URL <span class="req">*</span></label>
+      <input type="url" id="linkedin-url" placeholder="https://linkedin.com/in/yourprofile" />
+      <p class="field-hint">I'll review your profile before writing — existing tone, bio, and recent activity all inform the voice.</p>
+      <div class="field-error" id="err-linkedin-url">Please enter your LinkedIn URL.</div>
+    </div>
+
+    <div class="form-actions">
+      <button class="btn-primary" onclick="goToStep(2)">Continue <span class="btn-arrow">→</span></button>
+    </div>
+  </div>
+
+  <!-- ── STEP 2: AGENCY ── -->
+  <div class="form-section" id="step-2">
+    <div class="section-header">
+      <span class="section-tag">02 — Your Agency</span>
+      <div class="section-title">The business behind the posts</div>
+      <p class="section-sub">I need to understand what you do and who you do it for. This is what grounds every post in something real.</p>
+    </div>
+
+    <div class="field-group">
+      <label>Agency name <span class="req">*</span></label>
+      <input type="text" id="agency-name" placeholder="e.g. Carter Media Group" />
+      <div class="field-error" id="err-agency-name">Please enter your agency name.</div>
+    </div>
+
+    <div class="field-group">
+      <label>What does your agency do? <span class="req">*</span>
+        <span class="label-note">Be specific</span>
+      </label>
+      <textarea id="agency-what" class="tall" placeholder="e.g. We run paid media (Meta & Google) for DTC e-commerce brands doing £500K–£5M in revenue. We focus on direct response — conversion-focused creative and full-funnel campaign management."></textarea>
+      <p class="field-hint">The more specific, the better. "Marketing agency" tells me nothing. "Facebook ads for SaaS companies" tells me everything.</p>
+      <div class="field-error" id="err-agency-what">Please describe what your agency does.</div>
+    </div>
+
+    <div class="field-group">
+      <label>Who are your ideal clients?</label>
+      <textarea id="ideal-client" placeholder="e.g. Founders or marketing directors at B2B SaaS companies with 10–50 employees, spending £5K–£20K/month on paid ads, frustrated that their current agency can't show them what's working and why."></textarea>
+      <p class="field-hint">Describe the person, not just the company. What do they care about? What are they trying to fix?</p>
+    </div>
+
+    <div class="field-group">
+      <label>Agency size <span class="label-note">approx. headcount</span></label>
+      <div class="choice-grid two-col">
+        <div class="choice-card" onclick="selectChoice(this, 'agency-size')">
+          <div class="choice-radio"></div>
+          <div class="choice-label"><strong>Solo / 1-person</strong>Just you — maybe a contractor or two</div>
+        </div>
+        <div class="choice-card" onclick="selectChoice(this, 'agency-size')">
+          <div class="choice-radio"></div>
+          <div class="choice-label"><strong>2–5 people</strong>Small, tight team</div>
+        </div>
+        <div class="choice-card" onclick="selectChoice(this, 'agency-size')">
+          <div class="choice-radio"></div>
+          <div class="choice-label"><strong>6–15 people</strong>Established, growing</div>
+        </div>
+        <div class="choice-card" onclick="selectChoice(this, 'agency-size')">
+          <div class="choice-radio"></div>
+          <div class="choice-label"><strong>15+ people</strong>Scaled operation</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label>Approximate monthly revenue <span class="label-note">optional — helps me calibrate the positioning</span></label>
+      <select id="revenue">
+        <option value="" disabled selected>Select a range</option>
+        <option>Under £10K/month</option>
+        <option>£10K–£30K/month</option>
+        <option>£30K–£70K/month</option>
+        <option>£70K–£150K/month</option>
+        <option>£150K+/month</option>
+        <option>Prefer not to say</option>
+      </select>
+    </div>
+
+    <div class="form-actions">
+      <button class="btn-primary" onclick="goToStep(3)">Continue <span class="btn-arrow">→</span></button>
+      <button class="btn-secondary" onclick="goToStep(1)">← Back</button>
+    </div>
+  </div>
+
+  <!-- ── STEP 3: VOICE ── -->
+  <div class="form-section" id="step-3">
+    <div class="section-header">
+      <span class="section-tag">03 — Your Voice</span>
+      <div class="section-title">How you actually sound</div>
+      <p class="section-sub">This is the most important section. I'm not looking for how you want to come across — I'm looking for how you actually think and speak when you're not performing.</p>
+    </div>
+
+    <div class="field-group">
+      <label>Describe your communication style in a sentence or two <span class="req">*</span></label>
+      <textarea id="comm-style" placeholder="e.g. I'm direct. I don't soften things. I tend to say what I think, even when it's uncomfortable — and I find most business content on LinkedIn embarrassingly vague."></textarea>
+      <p class="field-hint">How would your closest colleague describe the way you communicate?</p>
+      <div class="field-error" id="err-comm-style">Please describe your communication style.</div>
+    </div>
+
+    <div class="field-group">
+      <label>Where do you sit on the formality scale?</label>
+      <div class="scale-wrap">
+        <div class="scale-track">
+          <div class="scale-btn" onclick="selectScale(this, 'formality')">1</div>
+          <div class="scale-btn" onclick="selectScale(this, 'formality')">2</div>
+          <div class="scale-btn" onclick="selectScale(this, 'formality')">3</div>
+          <div class="scale-btn" onclick="selectScale(this, 'formality')">4</div>
+          <div class="scale-btn" onclick="selectScale(this, 'formality')">5</div>
+        </div>
+        <div class="scale-labels">
+          <span>Casual / conversational</span>
+          <span>Professional / polished</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label>Pick the words that feel like you <span class="label-note">select all that apply</span></label>
+      <div class="choice-grid two-col">
+        <div class="choice-card check-card" onclick="toggleCheck(this)">
+          <div class="choice-radio"></div>
+          <div class="choice-label">Direct and blunt</div>
+        </div>
+        <div class="choice-card check-card" onclick="toggleCheck(this)">
+          <div class="choice-radio"></div>
+          <div class="choice-label">Warm and relatable</div>
+        </div>
+        <div class="choice-card check-card" onclick="toggleCheck(this)">
+          <div class="choice-radio"></div>
+          <div class="choice-label">Contrarian / opinionated</div>
+        </div>
+        <div class="choice-card check-card" onclick="toggleCheck(this)">
+          <div class="choice-radio"></div>
+          <div class="choice-label">Analytical / data-led</div>
+        </div>
+        <div class="choice-card check-card" onclick="toggleCheck(this)">
+          <div class="choice-radio"></div>
+          <div class="choice-label">Storyteller / narrative</div>
+        </div>
+        <div class="choice-card check-card" onclick="toggleCheck(this)">
+          <div class="choice-radio"></div>
+          <div class="choice-label">Dry humour</div>
+        </div>
+        <div class="choice-card check-card" onclick="toggleCheck(this)">
+          <div class="choice-radio"></div>
+          <div class="choice-label">Methodical / step-by-step</div>
+        </div>
+        <div class="choice-card check-card" onclick="toggleCheck(this)">
+          <div class="choice-radio"></div>
+          <div class="choice-label">Energetic / enthusiastic</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label>Give me one thing you genuinely believe that most people in your industry get wrong <span class="req">*</span></label>
+      <textarea id="contrarian" class="tall" placeholder="e.g. Most agencies obsess over vanity metrics because it's easier to show clients a big impression number than to explain why their CPA went up. I think that's a trust problem, not a reporting problem — and it's killing long-term client relationships across the industry."></textarea>
+      <p class="field-hint">No hedging. No "it depends." The more specific and uncomfortable, the better. This is exactly the kind of thing I'll build posts around.</p>
+      <div class="field-error" id="err-contrarian">This is important — please share one genuine belief.</div>
+    </div>
+
+    <div class="field-group">
+      <label>Phrases, words, or writing habits you want to avoid</label>
+      <textarea id="avoid" placeholder="e.g. I never say 'leverage' or 'unlock your potential.' I hate posts that start with 'Hot take:' — if it's a hot take, just say it. No bullet-point listicles. No rhetorical questions just to add questions."></textarea>
+      <p class="field-hint">Things that make you cringe when you read them on LinkedIn. I won't write them.</p>
+    </div>
+
+    <div class="field-group">
+      <label>Link to a post, email, or piece of writing that sounds like you <span class="label-note">optional but very useful</span></label>
+      <input type="url" id="voice-sample" placeholder="https://linkedin.com/posts/..." />
+      <p class="field-hint">Could be a LinkedIn post, an email you sent a client, a Slack message, a newsletter — anything written in your natural voice.</p>
+    </div>
+
+    <div class="form-actions">
+      <button class="btn-primary" onclick="goToStep(4)">Continue <span class="btn-arrow">→</span></button>
+      <button class="btn-secondary" onclick="goToStep(2)">← Back</button>
+    </div>
+  </div>
+
+  <!-- ── STEP 4: CONTENT ── -->
+  <div class="form-section" id="step-4">
+    <div class="section-header">
+      <span class="section-tag">04 — Content Material</span>
+      <div class="section-title">What I have to work with</div>
+      <p class="section-sub">I write from real things — not invented scenarios. Give me the raw material and I'll shape it into posts.</p>
+    </div>
+
+    <div class="field-group">
+      <label>What's been on your mind lately — work-wise? <span class="req">*</span></label>
+      <textarea id="on-mind" class="tall" placeholder="e.g. We just lost a client we'd had for 2 years. Not because of results — the results were strong — but because the founder left and the new marketing director came in with an existing agency relationship. I've been thinking a lot about how to make our relationships more founder-to-founder rather than contract-to-contract."></textarea>
+      <p class="field-hint">Don't edit this. Don't make it presentable. Just tell me what's been happening in the business — wins, losses, frustrations, things you've been figuring out.</p>
+      <div class="field-error" id="err-on-mind">This is the core material — please share something.</div>
+    </div>
+
+    <div class="field-group">
+      <label>Tell me about a recent client situation — good or bad</label>
+      <textarea id="client-story" class="tall" placeholder="e.g. A client came to us after getting burned by two previous agencies. They were sceptical of everything. We spent the first month just being ruthlessly transparent — sharing every decision, every test, every result before they asked. By month three they referred us to two other founders in their network without us asking. I think about that a lot when I think about what retention actually means."></textarea>
+      <p class="field-hint">The more specific the better. Real situations make for real posts. Names will never appear in anything I write.</p>
+    </div>
+
+    <div class="field-group">
+      <label>What's something you know — from experience — that most people in your space have to learn the hard way?</label>
+      <textarea id="hard-won" placeholder="e.g. The founders who are easiest to work with are almost never the ones with the biggest budgets. They're the ones who've been through enough campaigns to know that results take longer than they want and cost more than they planned — and they've made peace with it."></textarea>
+    </div>
+
+    <div class="field-group">
+      <label>Anything specific you want to address, announce, or position yourself around in these 3 posts? <span class="label-note">optional</span></label>
+      <textarea id="specific-angle" placeholder="e.g. I'd like at least one post to touch on why we focus exclusively on e-commerce brands — because I keep getting inbound from B2B companies and it wastes both our time."></textarea>
+    </div>
+
+    <hr class="field-divider">
+
+    <div class="field-group">
+      <label>How active have you been on LinkedIn recently?</label>
+      <div class="choice-grid">
+        <div class="choice-card" onclick="selectChoice(this, 'linkedin-activity')">
+          <div class="choice-radio"></div>
+          <div class="choice-label"><strong>Dormant — haven't posted in months</strong>Starting fresh; audience may need re-warming</div>
+        </div>
+        <div class="choice-card" onclick="selectChoice(this, 'linkedin-activity')">
+          <div class="choice-radio"></div>
+          <div class="choice-label"><strong>Occasional — 1–2 posts a month</strong>Some activity but inconsistent</div>
+        </div>
+        <div class="choice-card" onclick="selectChoice(this, 'linkedin-activity')">
+          <div class="choice-radio"></div>
+          <div class="choice-label"><strong>Regular — posting weekly</strong>Consistent presence, looking to improve quality</div>
+        </div>
+        <div class="choice-card" onclick="selectChoice(this, 'linkedin-activity')">
+          <div class="choice-radio"></div>
+          <div class="choice-label"><strong>Very active — posting multiple times a week</strong>High-volume, want sharper results</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button class="btn-primary" onclick="goToStep(5)">Continue <span class="btn-arrow">→</span></button>
+      <button class="btn-secondary" onclick="goToStep(3)">← Back</button>
+    </div>
+  </div>
+
+  <!-- ── STEP 5: GOALS ── -->
+  <div class="form-section" id="step-5">
+    <div class="section-header">
+      <span class="section-tag">05 — Goals & Preferences</span>
+      <div class="section-title">What these posts need to do</div>
+      <p class="section-sub">The last section. This tells me how to weight what I write — what outcome matters most, and what you don't want.</p>
+    </div>
+
+    <div class="field-group">
+      <label>What's the primary goal for these posts? <span class="req">*</span></label>
+      <div class="choice-grid">
+        <div class="choice-card" onclick="selectChoice(this, 'primary-goal')">
+          <div class="choice-radio"></div>
+          <div class="choice-label"><strong>Generate inbound — DMs and sales conversations</strong>I want prospects to reach out after seeing my posts</div>
+        </div>
+        <div class="choice-card" onclick="selectChoice(this, 'primary-goal')">
+          <div class="choice-radio"></div>
+          <div class="choice-label"><strong>Build authority and recognition in my niche</strong>I want to be known as the go-to person in my space</div>
+        </div>
+        <div class="choice-card" onclick="selectChoice(this, 'primary-goal')">
+          <div class="choice-radio"></div>
+          <div class="choice-label"><strong>Re-engage a dormant audience</strong>I've been quiet — I want to come back with something worth reading</div>
+        </div>
+        <div class="choice-card" onclick="selectChoice(this, 'primary-goal')">
+          <div class="choice-radio"></div>
+          <div class="choice-label"><strong>Attract talent or partnerships</strong>I want the right people (future hires, collaborators) to find me</div>
+        </div>
+      </div>
+      <div class="field-error" id="err-primary-goal">Please select a primary goal.</div>
+    </div>
+
+    <div class="field-group">
+      <label>Which formats are you open to?<span class="label-note"> select all that apply</span></label>
+      <div class="choice-grid two-col">
+        <div class="choice-card check-card" onclick="toggleCheck(this)">
+          <div class="choice-radio"></div>
+          <div class="choice-label"><strong>Contrarian take</strong>Challenging a common belief</div>
+        </div>
+        <div class="choice-card check-card" onclick="toggleCheck(this)">
+          <div class="choice-radio"></div>
+          <div class="choice-label"><strong>Micro-story</strong>A specific moment, with a lesson</div>
+        </div>
+        <div class="choice-card check-card" onclick="toggleCheck(this)">
+          <div class="choice-radio"></div>
+          <div class="choice-label"><strong>Silent pitch</strong>Positioning without selling</div>
+        </div>
+        <div class="choice-card check-card" onclick="toggleCheck(this)">
+          <div class="choice-radio"></div>
+          <div class="choice-label"><strong>Process breakdown</strong>How you do what you do</div>
+        </div>
+        <div class="choice-card check-card" onclick="toggleCheck(this)">
+          <div class="choice-radio"></div>
+          <div class="choice-label"><strong>Hard-won list</strong>Specific observations, ranked</div>
+        </div>
+        <div class="choice-card check-card" onclick="toggleCheck(this)">
+          <div class="choice-radio"></div>
+          <div class="choice-label"><strong>Surprise me</strong>I trust your judgement</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label>Any posts, writers, or accounts on LinkedIn you think do it well? <span class="label-note">optional</span></label>
+      <textarea id="admired" placeholder="e.g. I like how Alex Hormozi writes — not the hype, but the structure. Very specific, very direct. I also follow a few agency founders who write about client relationships without making everything a case study."></textarea>
+      <p class="field-hint">You don't have to name anyone. But if something immediately comes to mind, share it — it helps me calibrate the register.</p>
+    </div>
+
+    <div class="field-group">
+      <label>Anything else I should know before I start writing?</label>
+      <textarea id="anything-else" placeholder="e.g. We're in a sensitive growth phase — avoid anything that implies we have capacity issues. Also, I'd prefer not to mention specific client names or industries, even in general terms."></textarea>
+    </div>
+
+    <div class="form-actions">
+      <button class="btn-primary" onclick="submitForm()">Submit — let's go <span class="btn-arrow">→</span></button>
+      <button class="btn-secondary" onclick="goToStep(4)">← Back</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- ── CONFIRMATION ── -->
+<div id="step-done">
+  <div class="done-icon">✓</div>
+  <div class="done-title">You're all set,<br><em id="done-name">let's build your voice.</em></div>
+  <p class="done-body">Your intake form is in. I'll read through everything carefully before I write a single word — and your 3 posts will be in your inbox within 72 hours.</p>
+
+  <div class="done-card">
+    <div class="done-card-title">What happens next</div>
+    <div class="done-item"><span class="done-bullet">→</span><span>I review your LinkedIn profile and everything you shared here</span></div>
+    <div class="done-item"><span class="done-bullet">→</span><span>I build your voice profile — the document that governs every word I write</span></div>
+    <div class="done-item"><span class="done-bullet">→</span><span>3 posts land in your inbox, fully written, within 72 hours</span></div>
+    <div class="done-item"><span class="done-bullet">→</span><span>One round of revisions is included — most clients approve with minor tweaks</span></div>
+  </div>
+
+  <p class="done-linkedin">Questions before then? DM me directly — <a href="https://www.linkedin.com/in/mohamedazara1/" target="_blank">linkedin.com/in/mohamedazara1</a> — I reply same day.</p>
+</div>
+
+<footer>
+  <p>Mohamed Azara — LinkedIn Ghostwriter for Marketing Agency Founders</p>
+</footer>
+
+<script>
+  let currentStep = 1;
+  const totalSteps = 5;
+
+  function goToStep(n) {
+    if (n > currentStep && !validateStep(currentStep)) return;
+    document.getElementById('step-' + currentStep).classList.remove('active');
+    currentStep = n;
+    document.getElementById('step-' + currentStep).classList.add('active');
+    updateProgress(n);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function updateProgress(active) {
+    for (let i = 1; i <= totalSteps; i++) {
+      const dot = document.getElementById('dot-' + i);
+      const lbl = document.getElementById('lbl-' + i);
+      if (i < active) {
+        dot.className = 'progress-dot done';
+        dot.innerHTML = '';
+        if (lbl) lbl.className = 'progress-label';
+      } else if (i === active) {
+        dot.className = 'progress-dot active';
+        dot.innerHTML = '<span>' + i + '</span>';
+        if (lbl) lbl.className = 'progress-label active';
+      } else {
+        dot.className = 'progress-dot';
+        dot.innerHTML = '<span>' + i + '</span>';
+        if (lbl) lbl.className = 'progress-label';
+      }
+      if (i < totalSteps) {
+        const line = document.getElementById('line-' + i);
+        if (line) line.className = 'progress-line' + (i < active ? ' done' : '');
+      }
+    }
+  }
+
+  function validateStep(step) {
+    let valid = true;
+
+    const rules = {
+      1: [
+        { id: 'first-name',   err: 'err-first-name',   check: v => v.trim().length > 0 },
+        { id: 'last-name',    err: 'err-last-name',     check: v => v.trim().length > 0 },
+        { id: 'email',        err: 'err-email',         check: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) },
+        { id: 'linkedin-url', err: 'err-linkedin-url',  check: v => v.trim().length > 0 },
+      ],
+      2: [
+        { id: 'agency-name', err: 'err-agency-name', check: v => v.trim().length > 0 },
+        { id: 'agency-what', err: 'err-agency-what', check: v => v.trim().length > 0 },
+      ],
+      3: [
+        { id: 'comm-style', err: 'err-comm-style', check: v => v.trim().length > 0 },
+        { id: 'contrarian',  err: 'err-contrarian',  check: v => v.trim().length > 0 },
+      ],
+      4: [
+        { id: 'on-mind', err: 'err-on-mind', check: v => v.trim().length > 0 },
+      ],
+      5: []
+    };
+
+    (rules[step] || []).forEach(rule => {
+      const el = document.getElementById(rule.id);
+      const errEl = document.getElementById(rule.err);
+      if (!el) return;
+      if (!rule.check(el.value)) {
+        el.classList.add('invalid');
+        if (errEl) errEl.style.display = 'block';
+        valid = false;
+      } else {
+        el.classList.remove('invalid');
+        if (errEl) errEl.style.display = 'none';
+      }
+    });
+
+    if (step === 5) {
+      const goalSelected = document.querySelector('#step-5 .choice-card.selected:not(.check-card)');
+      const goalErr = document.getElementById('err-primary-goal');
+      if (!goalSelected) {
+        if (goalErr) goalErr.style.display = 'block';
+        valid = false;
+      } else {
+        if (goalErr) goalErr.style.display = 'none';
+      }
+    }
+
+    return valid;
+  }
+
+  // Clear validation state on input
+  document.querySelectorAll('input, textarea, select').forEach(el => {
+    el.addEventListener('input', () => {
+      el.classList.remove('invalid');
+      const errEl = document.getElementById('err-' + el.id);
+      if (errEl) errEl.style.display = 'none';
+    });
+  });
+
+  function selectChoice(card, group) {
+    const container = card.closest('.choice-grid');
+    container.querySelectorAll('.choice-card:not(.check-card)').forEach(c => c.classList.remove('selected'));
+    card.classList.add('selected');
+    if (group === 'primary-goal') {
+      const errEl = document.getElementById('err-primary-goal');
+      if (errEl) errEl.style.display = 'none';
+    }
+  }
+
+  function toggleCheck(card) {
+    card.classList.toggle('selected');
+  }
+
+  function selectScale(btn) {
+    btn.closest('.scale-track').querySelectorAll('.scale-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+  }
+
+  const SHEETS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwMGLWz2s7k4KPC001FPgMPYavX9a8EI3hjW14aV8r_-05srAoK0chLasuJlAnmT7lywQ/exec';
+
+  function submitForm() {
+    if (!validateStep(5)) return;
+
+    const submitBtn = document.querySelector('#step-5 .btn-primary');
+    const originalText = submitBtn.innerHTML;
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = 'Sending… <span class="btn-arrow">↻</span>';
+
+    // Collect all form data
+    const data = {
+      'first-name':        document.getElementById('first-name').value.trim(),
+      'last-name':         document.getElementById('last-name').value.trim(),
+      'email':             document.getElementById('email').value.trim(),
+      'linkedin-url':      document.getElementById('linkedin-url').value.trim(),
+      'agency-name':       document.getElementById('agency-name').value.trim(),
+      'agency-what':       document.getElementById('agency-what').value.trim(),
+      'ideal-client':      document.getElementById('ideal-client').value.trim(),
+      'agency-size':       (document.querySelector('#step-2 .choice-card.selected:not(.check-card) .choice-label') || {}).innerText || '',
+      'revenue':           document.getElementById('revenue').value,
+      'comm-style':        document.getElementById('comm-style').value.trim(),
+      'formality-scale':   (document.querySelector('.scale-btn.selected') || {}).innerText || '',
+      'voice-traits':      [...document.querySelectorAll('#step-3 .check-card.selected .choice-label')].map(c => c.innerText).join(', '),
+      'contrarian':        document.getElementById('contrarian').value.trim(),
+      'avoid':             document.getElementById('avoid').value.trim(),
+      'voice-sample':      document.getElementById('voice-sample').value.trim(),
+      'on-mind':           document.getElementById('on-mind').value.trim(),
+      'client-story':      document.getElementById('client-story').value.trim(),
+      'hard-won':          document.getElementById('hard-won').value.trim(),
+      'specific-angle':    document.getElementById('specific-angle').value.trim(),
+      'linkedin-activity': (document.querySelector('#step-4 .choice-card.selected:not(.check-card) .choice-label') || {}).innerText || '',
+      'primary-goal':      (document.querySelector('#step-5 .choice-card.selected:not(.check-card) .choice-label') || {}).innerText || '',
+      'open-formats':      [...document.querySelectorAll('#step-5 .check-card.selected .choice-label')].map(c => c.innerText).join(', '),
+      'admired':           document.getElementById('admired').value.trim(),
+      'anything-else':     document.getElementById('anything-else').value.trim(),
+    };
+
+    // Use a hidden iframe + form POST — most reliable method for Apps Script from static sites
+    const iframe = document.createElement('iframe');
+    iframe.name = 'hidden-submit';
+    iframe.style.display = 'none';
+    document.body.appendChild(iframe);
+
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = SHEETS_ENDPOINT;
+    form.target = 'hidden-submit';
+    form.style.display = 'none';
+
+    // Send data as a single JSON field
+    const input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = 'payload';
+    input.value = JSON.stringify(data);
+    form.appendChild(input);
+
+    document.body.appendChild(form);
+    form.submit();
+
+    // Show confirmation after a short delay to allow submission
+    setTimeout(() => {
+      document.querySelectorAll('.form-section').forEach(s => s.classList.remove('active'));
+      document.querySelector('.welcome').style.display = 'none';
+      document.querySelector('.progress-wrap').style.display = 'none';
+      document.querySelector('.form-outer').style.display = 'none';
+
+      const firstName = data['first-name'];
+      if (firstName) document.getElementById('done-name').textContent = firstName + ', let\u2019s build your voice.';
+
+      document.getElementById('step-done').classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 1500);
+  }
+</script>
+
+</body>
+</html>
