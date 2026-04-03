@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohamed Azara — LinkedIn Ghostwriting for Agency Founders</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://www.paypal.com/sdk/js?client-id=BAAiryW7wqm8iIxQFMc-P_BMkCDfoQEPlPlau1T5o9jaDbxGk5xYHEUip6v_vsW7QVafEOt1HInW-295FQ&components=hosted-buttons&disable-funding=venmo&currency=USD"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0f0e0c;
+    --ink-2: #3a3832;
+    --ink-3: #7a776e;
+    --paper: #f7f5f0;
+    --paper-2: #edeae3;
+    --paper-3: #e2dfd7;
+    --accent: #1a472a;
+    --accent-light: #e8f0eb;
+    --accent-mid: #2d6a42;
+    --rule: rgba(15,14,12,0.1);
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); background: var(--paper); color: var(--ink); font-size: 16px; line-height: 1.7; font-weight: 300; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: var(--paper); border-bottom: 1px solid var(--rule);
+    padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 56px;
+  }
+  .nav-brand { font-family: var(--serif); font-size: 18px; color: var(--ink); text-decoration: none; }
+  .nav-links { display: flex; gap: 1.75rem; align-items: center; }
+  .nav-links a { font-size: 13px; font-weight: 400; color: var(--ink-3); text-decoration: none; letter-spacing: 0.02em; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-cta {
+    display: inline-block; background: var(--accent); color: #fff !important;
+    padding: 8px 18px; border-radius: 4px; font-size: 13px !important; font-weight: 500 !important;
+    text-decoration: none; letter-spacing: 0.02em; transition: background 0.2s; white-space: nowrap;
+  }
+  .nav-cta:hover { background: var(--accent-mid) !important; color: #fff !important; }
+
+  /* ── HERO ── */
+  .hero {
+    margin-top: 56px; padding: 5rem 2rem 3.5rem;
+    max-width: 760px; margin-left: auto; margin-right: auto; text-align: center;
+  }
+  .hero-eyebrow { font-size: 12px; font-weight: 500; letter-spacing: 0.12em; color: var(--accent); text-transform: uppercase; margin-bottom: 1.25rem; }
+  .hero h1 { font-family: var(--serif); font-size: clamp(2.2rem, 5vw, 3.4rem); line-height: 1.15; color: var(--ink); margin-bottom: 1.25rem; }
+  .hero h1 em { font-style: italic; color: var(--accent-mid); }
+  .hero p { font-size: 17px; color: var(--ink-2); max-width: 520px; margin: 0 auto 2rem; }
+  .hero-actions { display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+
+  /* ── SHARED BUTTON STYLES ── */
+  .btn-primary {
+    display: inline-block; background: var(--accent); color: #fff;
+    padding: 13px 28px; border-radius: 4px; font-size: 14px; font-weight: 500;
+    text-decoration: none; letter-spacing: 0.02em; transition: background 0.2s; white-space: nowrap;
+  }
+  .btn-primary:hover { background: var(--accent-mid); }
+  .btn-ghost {
+    display: inline-block; background: transparent; color: var(--accent);
+    padding: 13px 28px; border-radius: 4px; font-size: 14px; font-weight: 500;
+    text-decoration: none; letter-spacing: 0.02em;
+    border: 1.5px solid var(--accent);
+    transition: background 0.2s, color 0.2s; white-space: nowrap;
+  }
+  .btn-ghost:hover { background: var(--accent-light); }
+
+  /* ── SECTION ── */
+  .section { max-width: 800px; margin: 0 auto; padding: 4rem 2rem; border-top: 1px solid var(--rule); }
+  .section-label { display: flex; align-items: center; gap: 12px; margin-bottom: 2rem; }
+  .section-num { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; color: var(--accent); text-transform: uppercase; background: var(--accent-light); padding: 4px 10px; border-radius: 2px; flex-shrink: 0; }
+  .section-title { font-family: var(--serif); font-size: clamp(1.6rem, 3.5vw, 2.2rem); line-height: 1.2; color: var(--ink); }
+  .section-sub { font-size: 15px; color: var(--ink-3); margin-bottom: 2.5rem; max-width: 580px; line-height: 1.7; }
+
+  /* ── PROCESS ── */
+  .process-steps { display: grid; gap: 0; }
+  .step { display: grid; grid-template-columns: 48px 1fr; gap: 0 1.5rem; padding: 1.5rem 0; border-bottom: 1px solid var(--rule); }
+  .step:last-child { border-bottom: none; }
+  .step-left { display: flex; flex-direction: column; align-items: center; }
+  .step-num { width: 36px; height: 36px; border: 1.5px solid var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; color: var(--accent); background: var(--paper); z-index: 1; flex-shrink: 0; }
+  .step-line { width: 1px; flex: 1; background: var(--rule); margin-top: 8px; }
+  .step:last-child .step-line { display: none; }
+  .step-content { padding-top: 6px; padding-bottom: 1rem; }
+  .step-title { font-weight: 500; font-size: 15px; color: var(--ink); margin-bottom: 4px; }
+  .step-desc { font-size: 14px; color: var(--ink-3); line-height: 1.65; }
+  .step-time { display: inline-block; margin-top: 8px; font-size: 11px; font-weight: 500; color: var(--accent); background: var(--accent-light); padding: 3px 8px; border-radius: 2px; letter-spacing: 0.04em; }
+  .process-summary { margin-top: 2rem; background: var(--accent); color: #fff; border-radius: 6px; padding: 1.5rem 2rem; display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; justify-content: center; }
+  .ps-item { text-align: center; min-width: 60px; }
+  .ps-val { font-family: var(--serif); font-size: 2rem; line-height: 1; }
+  .ps-lbl { font-size: 12px; opacity: 0.75; margin-top: 4px; }
+  .ps-div { width: 1px; background: rgba(255,255,255,0.2); align-self: stretch; min-height: 40px; }
+
+  /* ── SAMPLE POSTS ACCORDION ── */
+  .posts-accordion { display: grid; gap: 0; }
+  .pa-item { border-bottom: 1px solid var(--rule); }
+  .pa-item:first-child { border-top: 1px solid var(--rule); }
+  .pa-trigger {
+    width: 100%; background: none; border: none; padding: 1.25rem 0;
+    text-align: left; cursor: pointer;
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    font-family: var(--sans);
+  }
+  .pa-trigger:hover .pa-title { color: var(--accent); }
+  .pa-meta { display: flex; align-items: center; gap: 10px; flex: 1; min-width: 0; }
+  .voice-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .v1 { background: #1a472a; } .v2 { background: #8b3a2a; } .v3 { background: #1a3a6e; }
+  .v4 { background: #5a2a7a; } .v5 { background: #7a4a00; } .v6 { background: #1a3a6e; }
+  .pa-title { font-size: 14px; font-weight: 500; color: var(--ink); line-height: 1.4; }
+  .pa-tags { display: flex; gap: 6px; flex-shrink: 0; flex-wrap: wrap; }
+  .pa-tag {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase;
+    padding: 3px 8px; border-radius: 2px;
+  }
+  .tag-type-contrarian { background: #fdf2f0; color: #8b3a2a; }
+  .tag-type-story { background: var(--accent-light); color: var(--accent); }
+  .tag-type-pitch { background: #fef3e2; color: #7a4a00; }
+  .tag-type-process { background: #f5eaf5; color: #5a2a7a; }
+  .tag-type-list { background: #e8f0fb; color: #1a3a6e; }
+  .tag-type-build { background: #f0f0f0; color: #3a3832; }
+  .pa-icon { font-size: 20px; color: var(--accent); flex-shrink: 0; transition: transform 0.25s; font-weight: 300; line-height: 1; }
+  .pa-item.open .pa-icon { transform: rotate(45deg); }
+  .pa-body { display: none; padding-bottom: 1.5rem; }
+  .pa-item.open .pa-body { display: block; }
+  .pa-voice-label { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 1rem; }
+  .pa-post { font-size: 15px; line-height: 1.85; color: var(--ink-2); white-space: pre-line; }
+  .pa-footer { margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--rule); font-size: 12px; color: var(--ink-3); display: flex; gap: 1.5rem; flex-wrap: wrap; }
+
+  /* ── CASE STUDY ── */
+  .cs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .cs-card { background: #fff; border: 1px solid var(--rule); border-radius: 6px; padding: 1.5rem; }
+  .cs-card-title { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 1rem; }
+  .cs-field { border-bottom: 1px solid var(--rule); padding: 10px 0; font-size: 14px; color: var(--ink-2); display: flex; flex-direction: column; gap: 3px; }
+  .cs-field:last-child { border-bottom: none; }
+  .cs-field-label { font-size: 11px; color: var(--ink-3); font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; }
+  .cs-field-value { color: var(--ink); }
+  .cs-metrics { margin-top: 1.5rem; background: var(--paper-2); border-radius: 6px; padding: 1.5rem; display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; text-align: center; }
+  .cs-metric-val { font-family: var(--serif); font-size: 1.8rem; color: var(--accent); line-height: 1.1; }
+  .cs-metric-lbl { font-size: 12px; color: var(--ink-3); margin-top: 4px; line-height: 1.4; }
+  .cs-before-after { margin-top: 1.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .ba-card { border-radius: 6px; padding: 1.25rem; }
+  .ba-before { background: #fdf2f0; border: 1px solid #f0c8c0; }
+  .ba-after { background: var(--accent-light); border: 1px solid #c0d8c8; }
+  .ba-label { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+  .ba-before .ba-label { color: #8b3a2a; }
+  .ba-after .ba-label { color: var(--accent); }
+  .ba-text { font-size: 13px; color: var(--ink-2); line-height: 1.6; }
+  .cs-quote { margin-top: 2rem; padding: 1.5rem; border-left: 3px solid var(--accent); background: var(--paper-2); border-radius: 0 6px 6px 0; }
+  .cs-quote p { font-family: var(--serif); font-size: 1.1rem; color: var(--ink); line-height: 1.6; font-style: italic; }
+  .cs-quote cite { display: block; margin-top: 8px; font-size: 12px; color: var(--ink-3); font-style: normal; }
+
+  /* ── FAQ ── */
+  .faq-list { display: grid; gap: 0; }
+  .faq-item { border-bottom: 1px solid var(--rule); }
+  .faq-item:first-child { border-top: 1px solid var(--rule); }
+  .faq-q {
+    width: 100%; background: none; border: none; padding: 1.25rem 0;
+    text-align: left; cursor: pointer; display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem;
+    font-family: var(--sans); font-size: 15px; font-weight: 500; color: var(--ink); line-height: 1.4;
+  }
+  .faq-q:hover { color: var(--accent); }
+  .faq-icon { font-size: 20px; color: var(--accent); flex-shrink: 0; transition: transform 0.25s; font-weight: 300; line-height: 1; margin-top: 2px; }
+  .faq-item.open .faq-icon { transform: rotate(45deg); }
+  .faq-a { display: none; padding-bottom: 1.25rem; font-size: 14px; color: var(--ink-3); line-height: 1.75; max-width: 600px; }
+  .faq-item.open .faq-a { display: block; }
+  .faq-a a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(26,71,42,0.3); }
+
+  /* ── FINAL CTA CARD ── */
+  .cta-section { max-width: 800px; margin: 0 auto; border-top: 1px solid var(--rule); padding: 4rem 2rem; }
+  .cta-inner {
+    background: var(--ink); border-radius: 8px; padding: 3rem;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;
+  }
+  .cta-eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 0.75rem; }
+  .cta-title { font-family: var(--serif); font-size: clamp(1.6rem, 3vw, 2.1rem); line-height: 1.2; color: #fff; margin-bottom: 1rem; }
+  .cta-title em { font-style: italic; color: #9FE1CB; }
+  .cta-desc { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 1.75rem; }
+  .cta-btn {
+    display: inline-block; background: #fff; color: var(--ink);
+    padding: 13px 28px; border-radius: 4px; font-size: 14px; font-weight: 500;
+    text-decoration: none; letter-spacing: 0.02em; transition: background 0.2s; white-space: nowrap;
+  }
+  .cta-btn:hover { background: #9FE1CB; }
+  .cta-ps { margin-top: 1.25rem; font-size: 12px; color: rgba(255,255,255,0.4); line-height: 1.65; }
+  .cta-ps a { color: rgba(255,255,255,0.65); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.2); }
+  .cta-detail-label { font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 0.75rem; }
+  .cta-row { display: flex; align-items: baseline; gap: 10px; padding: 0.85rem 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .cta-row:last-child { border-bottom: none; }
+  .cta-row-label { color: rgba(255,255,255,0.4); font-size: 12px; min-width: 90px; flex-shrink: 0; }
+  .cta-row-val { color: #fff; font-size: 14px; line-height: 1.5; }
+  .cta-row-val em { font-style: normal; color: #9FE1CB; font-weight: 500; }
+
+  /* ── PAYPAL BUTTON ── */
+  .paypal-wrap { margin-bottom: 1.25rem; }
+  .paypal-wrap .paypal-buttons { border-radius: 4px !important; }
+
+  /* ── FOOTER ── */
+  footer { border-top: 1px solid var(--rule); padding: 2rem; text-align: center; font-size: 13px; color: var(--ink-3); max-width: 800px; margin: 0 auto; }
+  footer a { color: var(--accent); text-decoration: none; }
+
+  /* ── MOBILE ── */
+  @media (max-width: 680px) {
+    nav { padding: 0 1.25rem; }
+    .nav-links { gap: 1rem; }
+    .nav-links a:not(.nav-cta) { display: none; }
+    .hero { padding: 3rem 1.25rem 2.5rem; }
+    .hero p { font-size: 16px; }
+    .hero-actions { flex-direction: column; align-items: stretch; padding: 0 0; }
+    .btn-primary, .btn-ghost { text-align: center; }
+    .section { padding: 2.5rem 1.25rem; }
+    .process-summary { gap: 1rem; padding: 1.25rem; }
+    .ps-div { display: none; }
+    .cs-grid { grid-template-columns: 1fr; }
+    .cs-before-after { grid-template-columns: 1fr; }
+    .cs-metrics { grid-template-columns: repeat(3,1fr); gap: 0.5rem; padding: 1rem; }
+    .cs-metric-val { font-size: 1.4rem; }
+    .post-footer { gap: 0.75rem; }
+    .cta-section { padding: 2.5rem 1.25rem; }
+    .cta-inner { grid-template-columns: 1fr; gap: 2rem; padding: 1.75rem; }
+    .cta-btn { display: block; text-align: center; }
+    .faq-q { font-size: 14px; }
+  }
+  @media (max-width: 400px) {
+    .cs-metrics { grid-template-columns: 1fr 1fr; }
+    .cs-metrics > div:last-child { grid-column: span 2; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#">Mohamed Azara</a>
+  <div class="nav-links">
+    <a href="#samples">The Work</a>
+    <a href="#process">How It Works</a>
+    <a href="#casestudy">Case Study</a>
+    <a href="#faq">FAQ</a>
+    <a href="#getstarted" class="nav-cta">Get 3 Posts — $150 →</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <div class="hero-eyebrow">LinkedIn Ghostwriting for Agency Founders</div>
+  <h1>You run the agency.<br><em>I run your LinkedIn.</em></h1>
+  <p>Done-for-you content that keeps you visible, builds your authority, and brings warm inbound — while you stay focused on delivery.</p>
+  <div class="hero-actions">
+    <a href="#process" class="btn-primary">See how it works ↓</a>
+    <a href="#samples" class="btn-ghost">See the work ↓</a>
+  </div>
+</div>
+
+<!-- ── 02: SAMPLE POSTS ── -->
+<section class="section" id="samples">
+  <div class="section-label">
+    <span class="section-num">01</span>
+    <div class="section-title">The Work</div>
+  </div>
+  <p class="section-sub">Six posts. Six different voices, goals, and formats. Every one written from a real brief.</p>
+
+  <div class="posts-accordion">
+
+    <div class="pa-item">
+      <button class="pa-trigger" onclick="togglePost(this)">
+        <div class="pa-meta">
+          <span class="voice-dot v1"></span>
+          <span class="pa-title">Most e-commerce brands kill their paid performance by optimising too early</span>
+        </div>
+        <div class="pa-tags"><span class="pa-tag tag-type-contrarian">Contrarian</span></div>
+        <span class="pa-icon">+</span>
+      </button>
+      <div class="pa-body">
+        <div class="pa-voice-label">Paid Media Agency Founder &middot; Direct &amp; Data-Led &middot; Goal: inbound from e-commerce brands</div>
+        <div class="pa-post">Most e-commerce brands kill their paid performance by optimising too early.
+
+They run a campaign for ten days. The numbers aren&#39;t where they want them. They change the creative, tweak the audience, adjust the bid strategy &mdash; all in the same week.
+
+Then they wonder why nothing stabilises.
+
+The algorithm needs data to learn. Every time you make a significant change, you reset the learning phase. You&#39;re not optimising &mdash; you&#39;re interrupting.
+
+I&#39;ve seen brands spend $40K a month and get worse results than brands spending $8K, purely because of how often they touched the campaigns.
+
+The discipline isn&#39;t in the setup. It&#39;s in leaving things alone long enough to see what&#39;s actually working.
+
+Most agencies don&#39;t tell their clients this clearly because it sounds like &ldquo;do nothing.&rdquo; But doing nothing, strategically, is sometimes the highest-value thing in the room.
+
+If your paid performance is all over the place &mdash; before you change anything, ask how often you&#39;ve been changing things.
+
+The answer is usually the problem.</div>
+        <div class="pa-footer">
+          <span>&#x2197; 1,240 impressions</span>
+          <span>&#x2661; 118 reactions</span>
+          <span>&#x1F4AC; 44 comments</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pa-item">
+      <button class="pa-trigger" onclick="togglePost(this)">
+        <div class="pa-meta">
+          <span class="voice-dot v2"></span>
+          <span class="pa-title">A client came to us with a &euro;15K/month Meta budget and a cost per purchase at &euro;94</span>
+        </div>
+        <div class="pa-tags"><span class="pa-tag tag-type-story">Micro-story</span></div>
+        <span class="pa-icon">+</span>
+      </button>
+      <div class="pa-body">
+        <div class="pa-voice-label">Paid Media Agency Founder &middot; Blunt &amp; Specific &middot; Goal: demonstrate expertise to high-spend buyers</div>
+        <div class="pa-post">A client came to us in January with a &euro;15K/month Meta budget and a cost per purchase sitting at &euro;94.
+
+Their previous agency had been running 22 active ad sets simultaneously.
+
+Twenty-two.
+
+The logic, apparently, was to &ldquo;test everything at once.&rdquo; What it actually did was split the budget so thin that nothing had enough data to learn from, and the algorithm was optimising for the wrong signals because it had nothing else to go on.
+
+We cut it to four ad sets in week one. Same budget. Kept the two creatives that had the most spend history, wrote two new ones based on their top-performing organic content.
+
+By week six, cost per purchase was &euro;51.
+
+Same product. Same market. Same budget.
+
+Just less noise, and enough patience to let the data actually tell us something.
+
+The problem with &ldquo;testing everything&rdquo; is that you learn nothing. Real testing means changing one variable, giving it time, and reading what happened.
+
+Everything else is just expensive guessing.</div>
+        <div class="pa-footer">
+          <span>&#x2197; 2,100 impressions</span>
+          <span>&#x2661; 187 reactions</span>
+          <span>&#x1F4AC; 63 comments</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pa-item">
+      <button class="pa-trigger" onclick="togglePost(this)">
+        <div class="pa-meta">
+          <span class="voice-dot v3"></span>
+          <span class="pa-title">SEO for SaaS is not SEO for e-commerce</span>
+        </div>
+        <div class="pa-tags"><span class="pa-tag tag-type-process">Process breakdown</span></div>
+        <span class="pa-icon">+</span>
+      </button>
+      <div class="pa-body">
+        <div class="pa-voice-label">SEO Consultant &middot; Measured &amp; Precise &middot; Goal: authority among SaaS founders and marketing leads</div>
+        <div class="pa-post">SEO for SaaS is not SEO for e-commerce.
+
+I say this because the strategies people copy from e-commerce into SaaS destroy performance in ways that take six months to show up &mdash; by which point everyone&#39;s forgotten what caused it.
+
+The difference matters.
+
+In e-commerce, you&#39;re capturing demand. Someone wants to buy running shoes. They search. You appear. Transaction happens.
+
+In SaaS, most of your potential customers don&#39;t know your product category exists yet. They&#39;re not searching for your solution &mdash; they&#39;re searching for their problem.
+
+Which means keyword strategy has to start two levels up from where most SEO playbooks begin.
+
+You don&#39;t want to rank for what your product does. You want to rank for what your customer is frustrated about before they know your product could fix it.
+
+That single shift changes the content you build, the pages you prioritise, the metrics you track, and how long you tell your CEO to wait before he starts asking questions.
+
+The companies getting the most from SEO in SaaS aren&#39;t chasing traffic. They&#39;re building the content library their ideal customer finds six months before they&#39;re ready to buy.
+
+That&#39;s a different job. And most agencies aren&#39;t set up to do it.</div>
+        <div class="pa-footer">
+          <span>&#x2197; 1,870 impressions</span>
+          <span>&#x2661; 156 reactions</span>
+          <span>&#x1F4AC; 58 comments</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pa-item">
+      <button class="pa-trigger" onclick="togglePost(this)">
+        <div class="pa-meta">
+          <span class="voice-dot v4"></span>
+          <span class="pa-title">Rebranding to attract better clients rarely works</span>
+        </div>
+        <div class="pa-tags"><span class="pa-tag tag-type-contrarian">Contrarian</span></div>
+        <span class="pa-icon">+</span>
+      </button>
+      <div class="pa-body">
+        <div class="pa-voice-label">Brand Strategist &middot; Warm but Precise &middot; Goal: re-engage dormant audience, generate DMs from founders considering a rebrand</div>
+        <div class="pa-post">Rebranding to attract better clients rarely works.
+
+I know because I&#39;ve been involved in enough of them to see the pattern on the other side.
+
+The brand changes. The prices go up. The website looks significantly more expensive. And then &mdash; six months in &mdash; the founder is still having the same conversations with the same type of client, just with a nicer deck to show them.
+
+Here&#39;s what actually changes the client quality: changing who you talk to, before you change what you look like.
+
+If your pipeline is full of the wrong client, your positioning is probably talking to them. And a new logo doesn&#39;t fix that. A new message does.
+
+The most effective repositioning I&#39;ve ever been part of didn&#39;t involve a rebrand at all. It involved a founder getting precise about who she wanted to work with, changing how she described her work, and updating one page on her existing website.
+
+She raised her day rate by 40% and closed two of the best clients she&#39;d ever worked with &mdash; both of whom told her, unprompted, that the way she described her work was what made them reach out.
+
+The work was the same. The signal was different.
+
+Spend the money on clarity first. Then spend it on craft.</div>
+        <div class="pa-footer">
+          <span>&#x2197; 3,400 impressions</span>
+          <span>&#x2661; 241 reactions</span>
+          <span>&#x1F4AC; 89 comments</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pa-item">
+      <button class="pa-trigger" onclick="togglePost(this)">
+        <div class="pa-meta">
+          <span class="voice-dot v5"></span>
+          <span class="pa-title">Fourteen months in and I still can&#39;t predict which features users will love</span>
+        </div>
+        <div class="pa-tags"><span class="pa-tag tag-type-build">Building in public</span></div>
+        <span class="pa-icon">+</span>
+      </button>
+      <div class="pa-body">
+        <div class="pa-voice-label">Early-Stage SaaS Founder &middot; Unguarded &amp; Direct &middot; Goal: attract early adopters, build credibility with investors</div>
+        <div class="pa-post">Fourteen months in and I still can&#39;t predict which features users will love.
+
+Last quarter we shipped something we&#39;d been planning for three months. Two weeks of engineering, design reviews, testing. Launched it quietly to our active users.
+
+Seven of them used it in the first month.
+
+The week before that launch, I added a small filter function in an afternoon because a user asked for it in a support ticket. Didn&#39;t even announce it.
+
+Thirty-one users were using it within two weeks. Three of them mentioned it unprompted on calls as a reason they wouldn&#39;t switch to a competitor.
+
+I&#39;ve stopped trying to predict what will land and started paying closer attention to what users do rather than what they say they want.
+
+What users ask for in feedback sessions is shaped by what they think is possible. What they actually do in the product is shaped by what they need. Those two things rarely match.
+
+The filter function they use constantly was never on any user&#39;s feature request list.
+
+It was just a problem someone had on a Tuesday that I happened to fix before the weekend.</div>
+        <div class="pa-footer">
+          <span>&#x2197; 2,680 impressions</span>
+          <span>&#x2661; 203 reactions</span>
+          <span>&#x1F4AC; 74 comments</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pa-item">
+      <button class="pa-trigger" onclick="togglePost(this)">
+        <div class="pa-meta">
+          <span class="voice-dot v6"></span>
+          <span class="pa-title">Most design briefs are solving the wrong problem</span>
+        </div>
+        <div class="pa-tags"><span class="pa-tag tag-type-pitch">Silent pitch</span></div>
+        <span class="pa-icon">+</span>
+      </button>
+      <div class="pa-body">
+        <div class="pa-voice-label">UX &amp; Product Agency Founder &middot; Precise &amp; Wry &middot; Goal: attract Series A/B founders and CPOs at the strategic level</div>
+        <div class="pa-post">Most design briefs are solving the wrong problem.
+
+Not because the client described it wrong. Because the problem they described is the symptom, and nobody asked what was underneath it.
+
+&ldquo;We need to redesign the onboarding flow.&rdquo;
+
+Fine. But why are users dropping off? Is it the flow, or is it that the product is asking for commitment before it&#39;s demonstrated value? Those are different problems. One is a UX problem. The other is a product positioning problem wearing a UX costume.
+
+We get briefed on the UX problem. We could deliver a beautiful new onboarding flow, invoice for it, and leave. The client would be happy for about six weeks.
+
+Or we could spend an hour before the brief asking different questions. What do users say when they churn? Where in the flow does drop-off actually happen &mdash; not where the client thinks it happens, but where the data says it happens? What&#39;s the one thing a retained user does in week one that a churned user doesn&#39;t?
+
+That hour usually changes the brief entirely.
+
+The agencies that get hired for the big strategic work aren&#39;t the ones with the best portfolios. They&#39;re the ones who made the client feel understood before the project even started.
+
+It&#39;s not a technique. It&#39;s just being curious before being useful.</div>
+        <div class="pa-footer">
+          <span>&#x2197; 1,920 impressions</span>
+          <span>&#x2661; 174 reactions</span>
+          <span>&#x1F4AC; 67 comments</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── 01: HOW IT WORKS ── -->
+<section class="section" id="process">
+  <div class="section-label">
+    <span class="section-num">02</span>
+    <div class="section-title">How It Works</div>
+  </div>
+  <p class="section-sub">One week. Three posts. $150. Here's exactly what happens from the moment you pay to the moment your content is live.</p>
+
+  <div class="process-steps">
+    <div class="step">
+      <div class="step-left"><div class="step-num">1</div><div class="step-line"></div></div>
+      <div class="step-content">
+        <div class="step-title">You Pay. You Land on the Intake Form.</div>
+        <div class="step-desc">$150 secures your spot. You're redirected to a short form immediately — no calls, no back-and-forth. Fill it in when it suits you.</div>
+        <span class="step-time">Your time: 2 min</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-left"><div class="step-num">2</div><div class="step-line"></div></div>
+      <div class="step-content">
+        <div class="step-title">You Complete the Intake Form</div>
+        <div class="step-desc">Around 10–15 minutes. Questions about your agency, your clients, and how you naturally communicate. This is where I learn how you think — not just what you do.</div>
+        <span class="step-time">Your time: 15 min — one time</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-left"><div class="step-num">3</div><div class="step-line"></div></div>
+      <div class="step-content">
+        <div class="step-title">I Build Your Voice Profile</div>
+        <div class="step-desc">I map your vocabulary, sentence rhythm, the positions you hold, and the things you'd never say. This document governs every word I write — so nothing sounds generic or off-brand.</div>
+        <span class="step-time">Your time: 0 min</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-left"><div class="step-num">4</div><div class="step-line"></div></div>
+      <div class="step-content">
+        <div class="step-title">3 Posts Written & Delivered in 72 Hours</div>
+        <div class="step-desc">Three fully structured posts — different formats, different angles — all written to reflect how you actually think and speak. In your inbox within 72 hours of submitting your form.</div>
+        <span class="step-time">Your time: 0 min</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-left"><div class="step-num">5</div><div class="step-line"></div></div>
+      <div class="step-content">
+        <div class="step-title">You Review, Approve, and Post</div>
+        <div class="step-desc">Read through the posts. One round of revisions is included — most founders approve with minimal changes because the voice capture does the heavy lifting before I write a single word.</div>
+        <span class="step-time">Your time: 10 min</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="process-summary">
+    <div class="ps-item"><div class="ps-val">25</div><div class="ps-lbl">min from you, total</div></div>
+    <div class="ps-div"></div>
+    <div class="ps-item"><div class="ps-val">3</div><div class="ps-lbl">posts delivered</div></div>
+    <div class="ps-div"></div>
+    <div class="ps-item"><div class="ps-val">72h</div><div class="ps-lbl">turnaround</div></div>
+    <div class="ps-div"></div>
+    <div class="ps-item"><div class="ps-val">0</div><div class="ps-lbl">calls required</div></div>
+    <div class="ps-div"></div>
+    <div class="ps-item"><div class="ps-val">$150</div><div class="ps-lbl">flat rate</div></div>
+  </div>
+</section>
+
+<!-- ── 03: CASE STUDY ── -->
+<section class="section" id="casestudy">
+  <div class="section-label">
+    <span class="section-num">03</span>
+    <div class="section-title">Case Study</div>
+  </div>
+  <p class="section-sub">This is what the monthly retainer produces. The trial week is where it starts.</p>
+
+  <div class="cs-grid">
+    <div class="cs-card">
+      <div class="cs-card-title">The Client</div>
+      <div class="cs-field"><span class="cs-field-label">Business</span><span class="cs-field-value">Founder, 8-person paid ads agency (Meta & Google)</span></div>
+      <div class="cs-field"><span class="cs-field-label">Revenue</span><span class="cs-field-value">$40K–$65K/month</span></div>
+      <div class="cs-field"><span class="cs-field-label">Goal</span><span class="cs-field-value">Reactivate dormant followers & drive qualified sales calls from LinkedIn</span></div>
+      <div class="cs-field"><span class="cs-field-label">Starting point</span><span class="cs-field-value">Last post 4 months prior. Zero inbound from LinkedIn in 6 months.</span></div>
+    </div>
+    <div class="cs-card">
+      <div class="cs-card-title">The Engagement</div>
+      <div class="cs-field"><span class="cs-field-label">Duration</span><span class="cs-field-value">1 month (monthly retainer)</span></div>
+      <div class="cs-field"><span class="cs-field-label">Deliverable</span><span class="cs-field-value">12 LinkedIn posts (3/week), fully ghostwritten</span></div>
+      <div class="cs-field"><span class="cs-field-label">Input from client</span><span class="cs-field-value">1 intake form, then weekly 5-min voice note</span></div>
+      <div class="cs-field"><span class="cs-field-label">Revisions</span><span class="cs-field-value">1 round on 3 posts across the month</span></div>
+    </div>
+  </div>
+
+  <div class="cs-metrics">
+    <div><div class="cs-metric-val">6.4×</div><div class="cs-metric-lbl">Avg. engagement lift vs. prior 30 days</div></div>
+    <div><div class="cs-metric-val">5</div><div class="cs-metric-lbl">Sales calls booked from LinkedIn</div></div>
+    <div><div class="cs-metric-val">+94</div><div class="cs-metric-lbl">New followers in 30 days</div></div>
+  </div>
+
+  <div class="cs-before-after">
+    <div class="ba-card ba-before">
+      <div class="ba-label">Before</div>
+      <div class="ba-text">Posting once every 3–4 weeks. Mostly agency news and case study links. 4–7 reactions per post. Follower base disengaged. Zero inbound from LinkedIn in 6 months.</div>
+    </div>
+    <div class="ba-card ba-after">
+      <div class="ba-label">After</div>
+      <div class="ba-text">3 posts/week. Mix of founder POV, client stories, and contrarian takes on paid media. 50–110 reactions per post. 5 sales calls booked — 2 converted to retainers within 30 days.</div>
+    </div>
+  </div>
+
+  <div class="cs-quote">
+    <p>"I hadn't posted in months and I assumed my audience had moved on. Within two weeks the comments were back. By the end of the month I had five sales calls in the diary — two of which closed. The posts sounded exactly like me, which is the part I was most sceptical about."</p>
+    <cite>— Founder, Paid Ads Agency (Manchester)</cite>
+  </div>
+</section>
+
+<!-- ── 04: FAQ ── -->
+<section class="section" id="faq">
+  <div class="section-label">
+    <span class="section-num">04</span>
+    <div class="section-title">FAQ</div>
+  </div>
+  <p class="section-sub">Everything people ask before they pay.</p>
+
+  <div class="faq-list">
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        How do you make posts sound like me and not like AI?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">The intake form is designed to extract how you actually think — not how you'd describe yourself on a website. I'm looking for your specific vocabulary, the positions you hold, the things you'd never say, and the way you tell a story. Once I have that, I write in that voice and don't deviate from it. Most clients say the first draft sounds more like them than content they've written themselves — because they're usually editing for "professionalism" in ways that strip out their actual voice.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        What if I don't like the posts?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">One round of revisions is included — tell me specifically what doesn't feel right and I'll rework it. In practice, most founders approve the first draft with minor tweaks, because the voice capture does most of the heavy lifting before I write a word. If something is genuinely off, I'll fix it. I'd rather get it right than have you post something you're not proud of.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        What's the difference between the $150 trial and the monthly retainer?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">The trial is one week — 3 posts, $150, delivered in 72 hours. It's designed to let you see the quality and feel the process before committing to anything ongoing. The monthly retainer is 12 posts per month (3 per week), billed monthly. Most clients who try the trial continue — not because I push them to, but because consistent posting is what produces the results. The trial is where it starts, not where it ends.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Do I need to be active on LinkedIn already?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">No. Some of my best results have come from founders who hadn't posted in months. A dormant audience isn't a dead one — they just need a reason to re-engage. The first week of content is designed to do exactly that: reintroduce you with something worth reading, not just announce that you're back.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        How much of my time does this actually take?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">For the trial: around 15 minutes to complete the intake form, and 10 minutes to review and approve the posts. That's it. No calls. No briefing sessions. No weekly check-ins. For the ongoing retainer, you send a 5-minute voice note once a week — talking about whatever's been happening in your business — and I handle everything else from there.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        I'm already posting occasionally. Will this still add value?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">Usually more value than for someone starting from scratch — because you already know what LinkedIn can do, and you've probably felt the gap between posting sporadically and posting consistently with a strategy behind it. The jump from 1–2 posts a month to 3 structured posts a week, all written in a coherent voice, is where the compound effect kicks in.</div>
+    </div>
+
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        I run a SaaS company, not an agency. Can you still help?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">Yes. The process works for any founder who sells a service or product to other businesses and wants to build a presence on LinkedIn. The voice capture approach is the same — I learn how you think, then write in that voice. The niche on my profile is agency founders because that's my core ICP, but if you're a SaaS founder, consultant, or B2B service provider with a point of view worth sharing, reach out before you pay and I'll tell you honestly whether it's a good fit.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── FINAL CTA CARD ── -->
+<div class="cta-section" id="getstarted">
+  <div class="cta-inner">
+    <div>
+      <div class="cta-eyebrow">Start here</div>
+      <div class="cta-title">Three posts.<br><em>$150. 72 hours.</em></div>
+      <p class="cta-desc">Pay once. Get three posts written in your voice, delivered to your inbox. One round of revisions included. No calls. No commitment beyond this.</p>
+      <div class="paypal-wrap">
+        <div id="paypal-container-AMSEA36NEPRYW"></div>
+      </div>
+      <p class="cta-ps">Questions first? DM me on <a href="https://www.linkedin.com/in/mohamedazara1/" target="_blank">LinkedIn</a> — I reply same day.</p>
+    </div>
+    <div>
+      <div class="cta-detail-label">What's included</div>
+      <div class="cta-row">
+        <span class="cta-row-label">What I need</span>
+        <span class="cta-row-val">You fill out an intake form — <em>15 min, one time</em></span>
+      </div>
+      <div class="cta-row">
+        <span class="cta-row-label">Deliverable</span>
+        <span class="cta-row-val"><em>3 LinkedIn posts</em>, fully written in your voice</span>
+      </div>
+      <div class="cta-row">
+        <span class="cta-row-label">Formats</span>
+        <span class="cta-row-val">Different angles — chosen for your goal and audience</span>
+      </div>
+      <div class="cta-row">
+        <span class="cta-row-label">Revisions</span>
+        <span class="cta-row-val"><em>1 round</em> included</span>
+      </div>
+      <div class="cta-row">
+        <span class="cta-row-label">Turnaround</span>
+        <span class="cta-row-val"><em>72 hours</em> from form submission</span>
+      </div>
+      <div class="cta-row">
+        <span class="cta-row-label">Cost</span>
+        <span class="cta-row-val"><em>$150</em> flat — no hidden fees</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>Mohamed Azara — LinkedIn Ghostwriter for Marketing Agency Founders &nbsp;·&nbsp; <a href="https://www.linkedin.com/in/mohamedazara1/" target="_blank">LinkedIn</a></p>
+</footer>
+
+<script>
+  paypal.HostedButtons({
+    hostedButtonId: "AMSEA36NEPRYW",
+  }).render("#paypal-container-AMSEA36NEPRYW");
+</script>
+
+<script>
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  function togglePost(btn) {
+    const item = btn.closest('.pa-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.pa-item.open').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+</script>
+
+</body>
+</html>
